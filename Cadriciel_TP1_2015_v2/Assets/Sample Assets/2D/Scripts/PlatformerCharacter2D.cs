@@ -5,27 +5,43 @@ public class PlatformerCharacter2D : MonoBehaviour
 	bool facingRight = true;							// For determining which way the player is currently facing.
 
 	[SerializeField] float maxSpeed = 10f;				// The fastest the player can travel in the x axis.
-	[SerializeField] float jumpForce = 400f;			// Amount of force added when the player jumps.	
+	[SerializeField] float jumpForce = 100f;			// Amount of force added when the player jumps.	
 
 	[Range(0, 1)]
 	[SerializeField] float crouchSpeed = .36f;			// Amount of maxSpeed applied to crouching movement. 1 = 100%
-	
-	[SerializeField] bool airControl = false;			// Whether or not a player can steer while jumping;
+	[Range(0f,1f)]
+	[SerializeField] float airControl = 1.0f;			// Whether or not a player can steer while jumping;
 	[SerializeField] LayerMask whatIsGround;			// A mask determining what is ground to the character
-	
+	[SerializeField] LayerMask whatIsWall;
+	[SerializeField] float jumpTime;
+	bool isAscending;
+
 	Transform groundCheck;								// A position marking where to check if the player is grounded.
-	float groundedRadius = .2f;							// Radius of the overlap circle to determine if grounded
+	float groundedRadius = 1.0f;							// Radius of the overlap circle to determine if grounded
 	bool grounded = false;								// Whether or not the player is grounded.
+
 	Transform ceilingCheck;								// A position marking where to check for ceilings
 	float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up
+
+	Transform leftWallCheck;
+	Transform rightWallCheck;
+	float wallRadius = 0.1f;
+	bool isLeftWall = false;
+	bool isRightWall = false;
+
 	Animator anim;										// Reference to the player's animator component.
 
+
+
+	float jumpTimer = 1.0f;
 
     void Awake()
 	{
 		// Setting up references.
 		groundCheck = transform.Find("GroundCheck");
 		ceilingCheck = transform.Find("CeilingCheck");
+		rightWallCheck = transform.Find("RightWallCheck");
+		leftWallCheck = transform.Find("LeftWallCheck");
 		anim = GetComponent<Animator>();
 	}
 
@@ -36,12 +52,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 		grounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 		anim.SetBool("Ground", grounded);
 
+		isLeftWall = Physics2D.OverlapCircle (leftWallCheck.position, wallRadius, whatIsWall);
+		isRightWall = Physics2D.OverlapCircle(rightWallCheck.position, wallRadius, whatIsWall);
+
 		// Set the vertical animation
 		anim.SetFloat("vSpeed", rigidbody2D.velocity.y);
 	}
 
 
-	public void Move(float move, bool crouch, bool jump)
+	public void Move(float move, bool crouch, bool jump, bool jumpButtonDown)
 	{
 
 
@@ -57,36 +76,60 @@ public class PlatformerCharacter2D : MonoBehaviour
 		anim.SetBool("Crouch", crouch);
 
 		//only control the player if grounded or airControl is turned on
-		if(grounded || airControl)
-		{
-			// Reduce the speed if crouching by the crouchSpeed multiplier
-			move = (crouch ? move * crouchSpeed : move);
+		// Reduce the speed if crouching by the crouchSpeed multiplier
+		move = (crouch ? move * crouchSpeed : move);
 
-			// The Speed animator parameter is set to the absolute value of the horizontal input.
-			anim.SetFloat("Speed", Mathf.Abs(move));
+		// The Speed animator parameter is set to the absolute value of the horizontal input.
+		anim.SetFloat("Speed", Mathf.Abs(move));
 
-			// Move the character
-			rigidbody2D.velocity = new Vector2(move * maxSpeed, rigidbody2D.velocity.y);
-			
-			// If the input is moving the player right and the player is facing left...
-			if(move > 0 && !facingRight)
-				// ... flip the player.
-				Flip();
-			// Otherwise if the input is moving the player left and the player is facing right...
-			else if(move < 0 && facingRight)
-				// ... flip the player.
-				Flip();
-		}
+		// Move the character
+		rigidbody2D.velocity = new Vector2(grounded ? move * maxSpeed : move * maxSpeed * airControl , rigidbody2D.velocity.y);
+		// If the input is moving the player right and the player is facing left...
+		if(move > 0 && !facingRight)
+			// ... flip the player.
+			Flip();
+		// Otherwise if the input is moving the player left and the player is facing right...
+		else if(move < 0 && facingRight)
+			// ... flip the player.
+			Flip();
 
         // If the player should jump...
-        if (grounded && jump) {
-            // Add a vertical force to the player.
-            anim.SetBool("Ground", false);
-            rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+		if (jump) {
+
+			if (isRightWall)
+			{
+				Debug.Log("Right Wall Jump");
+				rigidbody2D.AddForce(new Vector2(-jumpForce,0.0f));
+			}
+			else if (isLeftWall)
+			{
+				Debug.Log("Left Wall Jump");
+				rigidbody2D.AddForce(new Vector2(jumpForce,0.0f));
+			}
+
+            // Add a vertical force to the player
+			else if(grounded)
+			{
+				Debug.Log("Ground Jump");
+				anim.SetBool("Ground", false);
+				rigidbody2D.AddForce(new Vector2(0.0f,jumpForce));
+				isAscending = true;
+			}
         }
+		if (jumpButtonDown && jumpTime > 0.0f && isAscending) {
+			Debug.Log("Smooth Jump");
+			float proportionCompleted = jumpTimer / jumpTime;
+			Vector2 jumpForceVector = Vector2.Lerp (new Vector2 (0.0f, jumpForce), Vector2.zero, proportionCompleted);
+			rigidbody2D.AddForce (jumpForceVector);
+			jumpTimer += Time.deltaTime;
+		}
+		else
+		{
+			jumpTimer = 0.0f;
+			isAscending = false;
+		}
 	}
 
-	
 	void Flip ()
 	{
 		// Switch the way the player is labelled as facing.
@@ -97,4 +140,18 @@ public class PlatformerCharacter2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+}
+
+public class JumpState
+{
+	[SerializeField] float airControlValue;
+	
+	[SerializeField] float smoothJumpTime;
+
+	[SerializeField] int maxMultileJumps;
+	
+	[SerializeField] bool wallJumpEnabled;
+	
+	[SerializeField] bool jetpackModeEnabled;
+	[SerializeField] float jetpackForce;
 }

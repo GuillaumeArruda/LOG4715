@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
-
+using System.Collections;
 [RequireComponent(typeof(PlatformerCharacter2D))]
 public class Platformer2DUserControl : MonoBehaviour 
 {
 	private PlatformerCharacter2D character;
     private bool jump;
-
 
 	void Awake()
 	{
@@ -16,10 +15,11 @@ public class Platformer2DUserControl : MonoBehaviour
     {
         // Read the jump input in Update so button presses aren't missed.
 #if CROSS_PLATFORM_INPUT
-        if (CrossPlatformInput.GetButtonDown("Jump")) jump = true;
+		if (CrossPlatformInput.GetButtonDown("Jump")) jump = true;
 #else
 		if (Input.GetButtonDown("Jump")) jump = true;
 #endif
+
 
     }
 
@@ -27,6 +27,8 @@ public class Platformer2DUserControl : MonoBehaviour
 	{
 		// Read the inputs.
 		bool crouch = Input.GetKey(KeyCode.LeftControl);
+		bool jumpButtonDown = Input.GetButton("Jump");
+
 		#if CROSS_PLATFORM_INPUT
 		float h = CrossPlatformInput.GetAxis("Horizontal");
 		#else
@@ -34,7 +36,7 @@ public class Platformer2DUserControl : MonoBehaviour
 		#endif
 
 		// Pass all parameters to the character control script.
-		character.Move( h, crouch , jump );
+		character.Move( h, crouch , jump,jumpButtonDown);
 
         // Reset the jump input once it has been used.
 	    jump = false;
