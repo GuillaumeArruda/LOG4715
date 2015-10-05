@@ -15,7 +15,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	
 	Transform groundCheck;								// A position marking where to check if the player is grounded.
 	float groundedRadius = .2f;							// Radius of the overlap circle to determine if grounded
-	bool grounded = false;								// Whether or not the player is grounded.
+	public bool grounded = false;								// Whether or not the player is grounded.
 	Transform ceilingCheck;								// A position marking where to check for ceilings
 	float ceilingRadius = .01f;							// Radius of the overlap circle to determine if the player can stand up
 	Animator anim;										// Reference to the player's animator component.
@@ -43,8 +43,6 @@ public class PlatformerCharacter2D : MonoBehaviour
     LayerMask WhatIsWall;
     [SerializeField]
     float forceWallJump = 500f;
-    [SerializeField]
-    float wallJumpDuration = 0.1f;
     Transform wallCheck;
     float wallRadius = 0.2f;
     
@@ -60,6 +58,8 @@ public class PlatformerCharacter2D : MonoBehaviour
     bool showMaxJumpHeight = true;
 
     bool isJumping;
+    bool isFalling;
+    public bool isJetPacking;
     float yPositionFromJumpStart;
 	int numberOfJumpLeft;
 
@@ -98,8 +98,9 @@ public class PlatformerCharacter2D : MonoBehaviour
         {
             yPositionFromJumpStart = rigidbody2D.position[1];
         }
-		if (jumpButton && grounded && !isJumping) {
+		if (((frameJumpButtonDown && grounded) || !grounded) && !isJumping) {       //If the player jump or fall
             isJumping = true;
+            isFalling = !grounded;
 			anim.SetBool("Ground", false);
 			StartCoroutine(JumpRoutine());
 		}
@@ -153,7 +154,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 	IEnumerator JumpRoutine()
 	{
 		float timer = 0;
-		while (jumpButton && timer <= jumpDuration) 
+		while (jumpButton && timer <= jumpDuration && !isFalling) 
         {
 			float proportionCompleted = timer / jumpDuration;
 			Vector2 jumpVector = Vector2.Lerp(new Vector2(0,jumpForce),Vector2.zero, proportionCompleted);
@@ -163,19 +164,21 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 		while (!grounded) 
         {
-            if (frameJumpButtonDown && Physics2D.OverlapCircle(wallCheck.position, wallRadius, WhatIsWall) && isJumping)
+            if (frameJumpButtonDown && Physics2D.OverlapCircle(wallCheck.position, wallRadius, WhatIsWall) && isJumping)            //Wall jumping
             {
                 rigidbody2D.AddForce(new Vector2(-forceWallJump * transform.localScale[0] / Mathf.Abs(transform.localScale[0]), 0));
                 yield return new WaitForFixedUpdate();
             }
-            else if (frameJumpButtonDown && (numberOfJumpLeft != 0 || numberOfJumpInTheAir == -1))
+            else if (frameJumpButtonDown && (numberOfJumpLeft != 0 || numberOfJumpInTheAir == -1))                                  //Multiple jumps
 			{
 				numberOfJumpLeft--;
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x,0);
 				rigidbody2D.AddForce(new Vector2(0,jumpForceInTheAir));
                 yield return new WaitForFixedUpdate();
 			} 
-            else if(jumpButton && jetpackEnabled && numberOfJumpLeft == 0)
+            else if(jumpButton && jetpackEnabled && numberOfJumpLeft == 0)                                                          //JetPack
             {
+                isJetPacking = true;
                 rigidbody2D.AddForce(new Vector2(0, forceJetpack));
                 yield return new WaitForFixedUpdate();
             }
@@ -186,6 +189,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 
         isJumping = false;
+        isFalling = false;
+        isJetPacking = false;
         anim.SetBool("Ground", true);
 		numberOfJumpLeft = numberOfJumpInTheAir;
 	}

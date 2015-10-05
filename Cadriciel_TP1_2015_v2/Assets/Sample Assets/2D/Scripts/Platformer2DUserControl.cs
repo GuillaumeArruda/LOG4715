@@ -18,7 +18,7 @@ public class Platformer2DUserControl : MonoBehaviour
         character.jumpButtonDown = CrossPlatformInput.GetButtonDown("Jump") || character.jumpButtonDown;
         character.jumpButton = CrossPlatformInput.GetButton("Jump");
 #else
-	    character.jumpButtonDown = Input.GetButtonDown("Jump");
+	    character.jumpButtonDown = Input.GetButtonDown("Jump") || characted.jumpButtonDown;
         character.jumpButton = Input.GetButton("Jump");
 #endif
     }
