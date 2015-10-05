@@ -30,7 +30,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     [SerializeField] 
     public float jumpDuration = 0.40f;			// Max effective time the player can press on the jump key
 	[SerializeField] 
-    float jumpForce = 150.0f;					// Amount of force added when the player jumps.	
+    float jumpForce = 120.0f;					// Amount of force added when the player jumps.	
 	
     //Saut multiple
     [SerializeField] 
@@ -197,8 +197,15 @@ public class PlatformerCharacter2D : MonoBehaviour
 
     public void ShowMaxJumpHeight()
     {
-        //TODO
-        Debug.DrawLine(new Vector3(-100, yPositionFromJumpStart + 2, 0), new Vector3(100, yPositionFromJumpStart + 2, 0), Color.red);
+        float proportionCompleted = 0f;
+        float force = 0f;
+        for (int i = 0; i < jumpDuration/Time.fixedDeltaTime; i++ )
+        {
+            proportionCompleted = (float)i * Time.fixedDeltaTime / jumpDuration;
+            force += Mathf.Lerp(jumpForce, 0, proportionCompleted);
+        }
+        float height = (0.5f * Mathf.Pow(force * Time.fixedDeltaTime / rigidbody2D.mass, 2)) / (rigidbody2D.mass * Physics.gravity.magnitude * rigidbody2D.gravityScale);
+        Debug.DrawLine(new Vector3(-100, yPositionFromJumpStart + height, 0), new Vector3(100, yPositionFromJumpStart + height, 0), Color.red);
     }
 
 	void Flip ()
