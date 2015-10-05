@@ -15,7 +15,7 @@ public class Platformer2DUserControl : MonoBehaviour
     {
         // Read the jump input in Update so button presses aren't missed.
 #if CROSS_PLATFORM_INPUT
-        character.jumpButtonDown = CrossPlatformInput.GetButtonDown("Jump");
+        character.jumpButtonDown = CrossPlatformInput.GetButtonDown("Jump") || character.jumpButtonDown;
         character.jumpButton = CrossPlatformInput.GetButton("Jump");
 #else
 	    character.jumpButtonDown = Input.GetButtonDown("Jump");

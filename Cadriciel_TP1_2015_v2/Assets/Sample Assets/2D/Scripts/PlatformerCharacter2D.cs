@@ -28,9 +28,9 @@ public class PlatformerCharacter2D : MonoBehaviour
     public float airControl = 1.0f;			// Whether or not a player can steer while jumping;
 	//Modulation de la hauteur du saut
     [SerializeField] 
-    public float jumpDuration = 0.20f;			// Max effective time the player can press on the jump key
+    public float jumpDuration = 0.40f;			// Max effective time the player can press on the jump key
 	[SerializeField] 
-    float jumpForce = 15.0f;					// Amount of force added when the player jumps.	
+    float jumpForce = 150.0f;					// Amount of force added when the player jumps.	
 	
     //Saut multiple
     [SerializeField] 
@@ -52,19 +52,19 @@ public class PlatformerCharacter2D : MonoBehaviour
     [SerializeField] 
     bool jetpackEnabled = true;
     [SerializeField]
-    float forceJetpack = Physics.gravity.magnitude;
+    float forceJetpack = 30f;
 
 
-
+    //Indicateur de la hauteur maximale du saut simple
     [SerializeField]
     bool showMaxJumpHeight = true;
 
     bool isJumping;
-    float yPositionFromJump;
+    float yPositionFromJumpStart;
 	int numberOfJumpLeft;
 
 
-
+    bool frameJumpButtonDown;
 	public bool jumpButtonDown {                                //True if the jump button has just been pressed down
 		get;
 		set;
@@ -96,7 +96,7 @@ public class PlatformerCharacter2D : MonoBehaviour
 
         if (!isJumping)
         {
-            yPositionFromJump = rigidbody2D.position[1];
+            yPositionFromJumpStart = rigidbody2D.position[1];
         }
 		if (jumpButton && grounded && !isJumping) {
             isJumping = true;
@@ -116,6 +116,8 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	public void Move(float move, bool crouch)
 	{
+        frameJumpButtonDown = jumpButtonDown;
+        jumpButtonDown = false;
 		// If crouching, check to see if the character can stand up
 		if(!crouch && anim.GetBool("Crouch"))
 		{
@@ -146,11 +148,6 @@ public class PlatformerCharacter2D : MonoBehaviour
 		else if(move < 0 && facingRight)
 			// ... flip the player.
 			Flip();
-
-        if (jumpButton && Physics2D.OverlapCircle(wallCheck.position, wallRadius, WhatIsWall) && isJumping)
-        {
-            //Il va fallor réécrire le mouvement
-        }
 	}
 
 	IEnumerator JumpRoutine()
@@ -166,28 +163,37 @@ public class PlatformerCharacter2D : MonoBehaviour
 		}
 		while (!grounded) 
         {
-			if(jumpButtonDown && (numberOfJumpLeft != 0 || numberOfJumpInTheAir == -1))
+            if (frameJumpButtonDown && Physics2D.OverlapCircle(wallCheck.position, wallRadius, WhatIsWall) && isJumping)
+            {
+                rigidbody2D.AddForce(new Vector2(-forceWallJump * transform.localScale[0] / Mathf.Abs(transform.localScale[0]), 0));
+                yield return new WaitForFixedUpdate();
+            }
+            else if (frameJumpButtonDown && (numberOfJumpLeft != 0 || numberOfJumpInTheAir == -1))
 			{
 				numberOfJumpLeft--;
 				rigidbody2D.AddForce(new Vector2(0,jumpForceInTheAir));
+                yield return new WaitForFixedUpdate();
 			} 
             else if(jumpButton && jetpackEnabled && numberOfJumpLeft == 0)
             {
                 rigidbody2D.AddForce(new Vector2(0, forceJetpack));
                 yield return new WaitForFixedUpdate();
             }
-            yield return null;
+            else
+            {
+                yield return new WaitForFixedUpdate();
+            }
 		}
 
         isJumping = false;
-		anim.SetBool("Ground", true);
+        anim.SetBool("Ground", true);
 		numberOfJumpLeft = numberOfJumpInTheAir;
 	}
 
     public void ShowMaxJumpHeight()
     {
         //TODO
-        Debug.DrawLine(new Vector3(-100, yPositionFromJump + 2, 0), new Vector3(100, yPositionFromJump + 2, 0), Color.red);
+        Debug.DrawLine(new Vector3(-100, yPositionFromJumpStart + 2, 0), new Vector3(100, yPositionFromJumpStart + 2, 0), Color.red);
     }
 
 	void Flip ()
