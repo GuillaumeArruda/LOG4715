@@ -23,9 +23,11 @@ public class PlatformerCharacter2D : MonoBehaviour
 
 	//Modification
     //Déplacement aerien
-	[Range(0.0f,1.0f)]
 	[SerializeField] 
     public float airControl = 1.0f;			// Whether or not a player can steer while jumping;
+    [SerializeField]
+    float forceWhileInTheAir = 10f;
+
 	//Modulation de la hauteur du saut
     [SerializeField] 
     public float jumpDuration = 0.20f;			// Max effective time the player can press on the jump key
@@ -46,7 +48,7 @@ public class PlatformerCharacter2D : MonoBehaviour
     [SerializeField]
     float forceWallJumpVertical = 300f;
     Transform wallCheck;
-    float wallRadius = 0.2f;
+    float wallRadius = 0.3f;
     
     //JetPack
     [SerializeField] 
@@ -141,12 +143,12 @@ public class PlatformerCharacter2D : MonoBehaviour
 		// Move the character
         if (grounded)
         {
-            float xSpeed = grounded ? move * maxSpeed : move * maxSpeed * airControl;
+            float xSpeed = move * maxSpeed;
             rigidbody2D.velocity = new Vector2(xSpeed, rigidbody2D.velocity.y);
         }
-        else
+        else if (Mathf.Abs(rigidbody2D.velocity.x) < (maxSpeed * airControl))
         {
-            rigidbody2D.AddForce(new Vector2(move*maxSpeed * airControl,0));
+            rigidbody2D.AddForce(new Vector2(move * forceWhileInTheAir,0));
         }
 
 
