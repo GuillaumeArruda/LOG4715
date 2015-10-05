@@ -28,9 +28,9 @@ public class PlatformerCharacter2D : MonoBehaviour
     public float airControl = 1.0f;			// Whether or not a player can steer while jumping;
 	//Modulation de la hauteur du saut
     [SerializeField] 
-    public float jumpDuration = 0.40f;			// Max effective time the player can press on the jump key
+    public float jumpDuration = 0.20f;			// Max effective time the player can press on the jump key
 	[SerializeField] 
-    float jumpForce = 120.0f;					// Amount of force added when the player jumps.	
+    float jumpForce = 160.0f;					// Amount of force added when the player jumps.	
 	
     //Saut multiple
     [SerializeField] 
