@@ -42,7 +42,9 @@ public class PlatformerCharacter2D : MonoBehaviour
     [SerializeField]
     LayerMask WhatIsWall;
     [SerializeField]
-    float forceWallJump = 500f;
+    float forceWallJumpHorizontal = 500f;
+    [SerializeField]
+    float forceWallJumpVertical = 300f;
     Transform wallCheck;
     float wallRadius = 0.2f;
     
@@ -137,9 +139,16 @@ public class PlatformerCharacter2D : MonoBehaviour
 		anim.SetFloat("Speed", Mathf.Abs(move));
 
 		// Move the character
-		float xSpeed = grounded ? move * maxSpeed : move * maxSpeed * airControl;
+        if (grounded)
+        {
+            float xSpeed = grounded ? move * maxSpeed : move * maxSpeed * airControl;
+            rigidbody2D.velocity = new Vector2(xSpeed, rigidbody2D.velocity.y);
+        }
+        else
+        {
+            rigidbody2D.AddForce(new Vector2(move*maxSpeed * airControl,0));
+        }
 
-		rigidbody2D.velocity = new Vector2 (xSpeed, rigidbody2D.velocity.y);
 
 		// If the input is moving the player right and the player is facing left...
 		if(move > 0 && !facingRight)
@@ -166,26 +175,21 @@ public class PlatformerCharacter2D : MonoBehaviour
         {
             if (frameJumpButtonDown && Physics2D.OverlapCircle(wallCheck.position, wallRadius, WhatIsWall) && isJumping)            //Wall jumping
             {
-                rigidbody2D.AddForce(new Vector2(-forceWallJump * transform.localScale[0] / Mathf.Abs(transform.localScale[0]), 0));
-                yield return new WaitForFixedUpdate();
+                rigidbody2D.AddForce(new Vector2(-forceWallJumpHorizontal * transform.localScale[0] / Mathf.Abs(transform.localScale[0]), forceWallJumpVertical));
             }
             else if (frameJumpButtonDown && (numberOfJumpLeft != 0 || numberOfJumpInTheAir == -1))                                  //Multiple jumps
 			{
 				numberOfJumpLeft--;
                 rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x,0);
 				rigidbody2D.AddForce(new Vector2(0,jumpForceInTheAir));
-                yield return new WaitForFixedUpdate();
 			} 
             else if(jumpButton && jetpackEnabled && numberOfJumpLeft == 0)                                                          //JetPack
             {
                 isJetPacking = true;
                 rigidbody2D.AddForce(new Vector2(0, forceJetpack));
-                yield return new WaitForFixedUpdate();
+                
             }
-            else
-            {
-                yield return new WaitForFixedUpdate();
-            }
+            yield return new WaitForFixedUpdate();
 		}
 
         isJumping = false;

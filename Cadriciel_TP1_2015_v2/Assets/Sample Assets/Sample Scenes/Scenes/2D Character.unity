@@ -3311,8 +3311,8 @@ MonoBehaviour:
     m_Bits: 4294966783
   grounded: 0
   airControl: 1
-  jumpDuration: .400000006
-  jumpForce: 150
+  jumpDuration: .200000003
+  jumpForce: 160
   numberOfJumpInTheAir: 2
   jumpForceInTheAir: 500
   WhatIsWall:
