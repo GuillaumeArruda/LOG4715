@@ -9,9 +9,6 @@ class CarProjectileLauncher : MonoBehaviour
     public Rigidbody redShell;
     public Rigidbody greenShell;
 
-    [SerializeField] private float greenShellShootingForce = 5000;
-    [SerializeField] private float redShellShootingForce = 5000;
-    [SerializeField] private float blueShellShootingForce = 5000;
     [SerializeField] private float frontOfVehiculeFireOffset = 10;
 
     public void Fire(bool fired, ShellColors color)
@@ -21,39 +18,25 @@ class CarProjectileLauncher : MonoBehaviour
             switch(color)
             {
                 case ShellColors.Green:
-                    FireGreenShell();
+                    FireShell(greenShell);
                     break;
                 case ShellColors.Red:
-                    FireRedShell();
+                    FireShell(redShell);
                     break;
                 case ShellColors.Blue:
-                    FireBlueShell();
+                    FireShell(blueShell);
                     break;
             }
         }
     }
 
-    private void FireGreenShell()
+    private void FireShell(Rigidbody shell)
     {
-        Rigidbody shell;
-        shell = Instantiate(greenShell, transform.position, transform.rotation) as Rigidbody;
-        shell.transform.position += shell.transform.forward * frontOfVehiculeFireOffset;
-        shell.AddForce(transform.forward * greenShellShootingForce);
-    }
-
-    private void FireRedShell()
-    {
-        Rigidbody shell;
-        shell = Instantiate(redShell, transform.position, transform.rotation) as Rigidbody;
-        shell.transform.position += shell.transform.forward * frontOfVehiculeFireOffset;
-        shell.AddForce(transform.forward * redShellShootingForce);
-    }
-
-    private void FireBlueShell()
-    {
-        Rigidbody shell;
-        shell = Instantiate(blueShell, transform.position, transform.rotation) as Rigidbody;
-        shell.transform.position += shell.transform.forward * frontOfVehiculeFireOffset;
-        shell.AddForce(transform.forward * blueShellShootingForce);
+        Rigidbody firedShell;
+        firedShell = Instantiate(shell, transform.position, transform.rotation) as Rigidbody;
+        firedShell.transform.position += firedShell.transform.forward * frontOfVehiculeFireOffset;
+        firedShell.transform.position += firedShell.transform.up * 0.5f;
+        firedShell.velocity = firedShell.transform.forward * firedShell.GetComponent<ShellMovementComponent>().GetMaxShellVelocity;
+        firedShell.GetComponent<ShellMovementComponent>().enabled = true;
     }
 }
