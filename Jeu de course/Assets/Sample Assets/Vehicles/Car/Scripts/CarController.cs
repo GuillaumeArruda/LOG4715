@@ -170,6 +170,12 @@ public class CarController : MonoBehaviour
 
 	}
 
+    public void Fire(bool fired, ShellColors color)
+    {
+        CarProjectileLauncher carProjectileLauncher = GetComponent<CarProjectileLauncher>();
+        carProjectileLauncher.Fire(fired, color);
+    }
+
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)
 	{
 		// move.Z is the user's fwd/back input. We need to convert it into acceleration and braking.
