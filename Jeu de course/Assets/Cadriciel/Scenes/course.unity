@@ -8525,6 +8525,7 @@ GameObject:
   - 114: {fileID: 481286553}
   - 114: {fileID: 481286552}
   - 114: {fileID: 481286556}
+  - 114: {fileID: 481286558}
   m_Layer: 8
   m_Name: Joueur 1
   m_TagString: Player
@@ -8688,6 +8689,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &481286558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481286549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92add00cfb08be45ad279ef35130897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueShell: {fileID: 5434202, guid: 6211ec7b8f736b24a8fb4e36a4b6476c, type: 2}
+  redShell: {fileID: 5475346, guid: 542fbefb4b554e64b948987494c8c826, type: 2}
+  greenShell: {fileID: 5433984, guid: 870e856413d91e345861d6960208e409, type: 2}
+  greenShellShootingForce: 5000
+  redShellShootingForce: 5000
+  blueShellShootingForce: 5000
+  frontOfVehiculeFireOffset: 10
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
