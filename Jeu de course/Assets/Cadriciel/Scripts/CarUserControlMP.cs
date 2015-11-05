@@ -13,11 +13,13 @@ public class CarUserControlMP : MonoBehaviour
 	[SerializeField]
 	private string horizontal = "Horizontal";
 
+
 	private string fire1 = "Fire1";
 	private string fire2 = "Fire2";
 	private string fire3 = "Fire3";
     private string nitro = "Nitro";
     private string jump = "Jump";
+    private string roll = "Roll";
 	
 	void Awake ()
 	{
@@ -27,17 +29,18 @@ public class CarUserControlMP : MonoBehaviour
         nitroScript = GetComponent<NitroScript>();
 	}
 	
-	
 	void FixedUpdate()
 	{
 		// pass the input to the car!
 		#if CROSS_PLATFORM_INPUT
 		float h = CrossPlatformInput.GetAxis(horizontal);
 		float v = CrossPlatformInput.GetAxis(vertical);
+        float r = CrossPlatformInput.GetAxis(roll);
 #else
 		float h = Input.GetAxis(horizontal);
 		float v = Input.GetAxis(vertical);
 #endif
+        jumpScript.AirControl(h, v, r);
 		car.Move(h,v);
 	}
 

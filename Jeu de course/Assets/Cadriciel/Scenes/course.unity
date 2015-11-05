@@ -8799,6 +8799,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpDuration: .200000003
   jumpForceInTheAir: 120
+  airControlXAxis: 120
+  airControlYAxis: 120
+  airControlZAxis: 120
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
@@ -37319,6 +37322,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpDuration: .200000003
   jumpForceInTheAir: 120
+  airControlXAxis: 120
+  airControlYAxis: 120
+  airControlZAxis: 120
 --- !u!1 &1988451985
 GameObject:
   m_ObjectHideFlags: 0

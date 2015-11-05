@@ -316,11 +316,11 @@ public class CarController : MonoBehaviour
 
 	void PreserveDirectionInAir()
 	{
-		// special feature which allows cars to remain roughly pointing in the direction of travel
+		/*// special feature which allows cars to remain roughly pointing in the direction of travel
 		if (!anyOnGround && preserveDirectionWhileInAir && rigidbody.velocity.magnitude > smallSpeed) {
             rigidbody.MoveRotation(Quaternion.Slerp(rigidbody.rotation, Quaternion.LookRotation(rigidbody.velocity), Time.deltaTime));
 			rigidbody.angularVelocity = Vector3.Lerp (rigidbody.angularVelocity, Vector3.zero, Time.deltaTime);
-		}
+		}*/
 	}
 
 	// simple function to add a curved bias towards 1 for a value in the 0-1 range
