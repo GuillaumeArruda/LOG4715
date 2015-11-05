@@ -8585,6 +8585,7 @@ GameObject:
   - 114: {fileID: 481286553}
   - 114: {fileID: 481286552}
   - 114: {fileID: 481286559}
+  - 114: {fileID: 481286560}
   - 114: {fileID: 481286556}
   - 114: {fileID: 481286558}
   m_Layer: 8
@@ -8714,6 +8715,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -8783,6 +8785,20 @@ MonoBehaviour:
   nitroMaxCapacity: 100
   nitroEmptyBar: {fileID: 2800000, guid: 3cae02495b88d2d4fbf19382b7993691, type: 3}
   nitroFullBar: {fileID: 2800000, guid: fc3962f907c337a48b15e244bf594735, type: 3}
+--- !u!114 &481286560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11491710, guid: 0e7ee4df08df88c4880f43398f9ad2c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 527691314}
+  m_GameObject: {fileID: 481286549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae546499220fd09479c3bbab6bf2a92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpDuration: .200000003
+  jumpForceInTheAir: 120
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
@@ -18631,6 +18647,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -26965,6 +26982,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -30853,6 +30871,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -34429,6 +34448,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -37101,6 +37121,7 @@ GameObject:
   - 114: {fileID: 1977983686}
   - 114: {fileID: 1977983685}
   - 114: {fileID: 1977983692}
+  - 114: {fileID: 1977983693}
   - 114: {fileID: 1977983689}
   m_Layer: 8
   m_Name: Joueur 2
@@ -37192,6 +37213,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -37283,6 +37305,20 @@ MonoBehaviour:
   nitroMaxCapacity: 100
   nitroEmptyBar: {fileID: 0}
   nitroFullBar: {fileID: 0}
+--- !u!114 &1977983693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11491710, guid: 0e7ee4df08df88c4880f43398f9ad2c2,
+    type: 2}
+  m_PrefabInternal: {fileID: 2049109060}
+  m_GameObject: {fileID: 1977983683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae546499220fd09479c3bbab6bf2a92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jumpDuration: .200000003
+  jumpForceInTheAir: 120
 --- !u!1 &1988451985
 GameObject:
   m_ObjectHideFlags: 0
@@ -38722,6 +38758,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -39747,6 +39784,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6

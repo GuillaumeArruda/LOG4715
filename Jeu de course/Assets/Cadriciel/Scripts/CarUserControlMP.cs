@@ -4,6 +4,8 @@ using UnityEngine;
 public class CarUserControlMP : MonoBehaviour
 {
 	private CarController car;  // the car controller we want to use
+    private JumpScript jumpScript;
+    private NitroScript nitroScript;
 
 	[SerializeField]
 	private string vertical = "Vertical";
@@ -15,11 +17,14 @@ public class CarUserControlMP : MonoBehaviour
 	private string fire2 = "Fire2";
 	private string fire3 = "Fire3";
     private string nitro = "Nitro";
+    private string jump = "Jump";
 	
 	void Awake ()
 	{
 		// get the car controller
 		car = GetComponent<CarController>();
+        jumpScript = GetComponent<JumpScript>();
+        nitroScript = GetComponent<NitroScript>();
 	}
 	
 	
@@ -48,6 +53,9 @@ public class CarUserControlMP : MonoBehaviour
         car.Fire(fb, ShellColors.Blue);
 
         bool isUsingNitro = CrossPlatformInput.GetButton(nitro);
-        car.Nitro(isUsingNitro);
+        nitroScript.Accelerate(isUsingNitro);
+
+        jumpScript.JumpButtonDown = CrossPlatformInput.GetButtonDown(jump);
+        jumpScript.JumpButton = CrossPlatformInput.GetButton(jump);
     }
 }

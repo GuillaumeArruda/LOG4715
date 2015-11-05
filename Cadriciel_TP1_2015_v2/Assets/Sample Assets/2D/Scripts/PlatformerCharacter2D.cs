@@ -189,7 +189,6 @@ public class PlatformerCharacter2D : MonoBehaviour
             {
                 isJetPacking = true;
                 rigidbody2D.AddForce(new Vector2(0, forceJetpack));
-                
             }
             yield return new WaitForFixedUpdate();
 		}

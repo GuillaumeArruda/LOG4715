@@ -4,7 +4,8 @@ using UnityEngine;
 public class CarUserControl : MonoBehaviour
 {
     private CarController car;  // the car controller we want to use
-    
+    private JumpScript jump;
+    private NitroScript nitro;
 
     void Awake ()
     {
