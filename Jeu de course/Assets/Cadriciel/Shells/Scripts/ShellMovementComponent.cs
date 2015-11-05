@@ -3,8 +3,6 @@
 class ShellMovementComponent : MonoBehaviour
 {
     [SerializeField] public float shellVelocity = 60;
-    private float fallAcceleration = 30;
-    private float fallSpeed = 0.0f;
 
     void Update()
     {

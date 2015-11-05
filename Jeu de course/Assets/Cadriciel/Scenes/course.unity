@@ -8714,6 +8714,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -18631,6 +18632,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -26965,6 +26967,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -30853,6 +30856,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -34429,6 +34433,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -37192,6 +37197,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -38722,6 +38728,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6
@@ -39747,6 +39754,7 @@ MonoBehaviour:
   highAccelClip: {fileID: 8300000, guid: 03e3bd08a6e70684dbe299a3e185fdd2, type: 3}
   highDecelClip: {fileID: 8300000, guid: 03bf91d88fce91c41995d27de63cc967, type: 3}
   skidClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  nitroClip: {fileID: 0}
   pitchMultiplier: 1
   lowPitchMin: 1
   lowPitchMax: 6

@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabff887e53a0334daf988ae1b408f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellVelocity: 30
+  shellVelocity: 60
 --- !u!135 &13582174
 SphereCollider:
   m_ObjectHideFlags: 1
