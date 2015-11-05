@@ -56,7 +56,6 @@ public class CarController : MonoBehaviour
     private float maxReversingSpeed;                                                // The maximum reversing speed
 	private bool immobilized;                                                       // Whether the car is accepting inputs.
 
-
 	// publicly read-only props, useful for GUI, Sound effects, etc.
 	public int GearNum { get; private set; }                                        // the current gear we're in.
 	public float CurrentSpeed { get; private set; }                                 // the current speed of the car
@@ -116,7 +115,6 @@ public class CarController : MonoBehaviour
     {
         get { return maxSteerAngle; }
     }
-    
 
 	// variables added due to separating out things into functions!
 	bool anyOnGround;
@@ -174,6 +172,12 @@ public class CarController : MonoBehaviour
     {
         CarProjectileLauncher carProjectileLauncher = GetComponent<CarProjectileLauncher>();
         carProjectileLauncher.Fire(fired, color);
+    }
+
+    public void Nitro(bool nitro)
+    {
+        NitroScript nitroScript = GetComponent<NitroScript>();
+        nitroScript.Accelerate(nitro);
     }
 
 	void ConvertInputToAccelerationAndBraking (float accelBrakeInput)

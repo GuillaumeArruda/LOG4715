@@ -31,6 +31,7 @@ public class CarAudio : MonoBehaviour {
     public AudioClip highAccelClip;                                                     // Audio clip for high acceleration
     public AudioClip highDecelClip;                                                     // Audio clip for high deceleration
     public AudioClip skidClip;                                                          // Audio clip for the car skidding
+    public AudioClip nitroClip;
 	public float pitchMultiplier = 1f;                                                  // Used for altering the pitch of audio clips
 	public float lowPitchMin = 1f;                                                      // The lowest possible pitch for the low sounds
 	public float lowPitchMax = 6f;                                                      // The highest possible pitch for the low sounds

@@ -14,6 +14,7 @@ public class CarUserControlMP : MonoBehaviour
 	private string fire1 = "Fire1";
 	private string fire2 = "Fire2";
 	private string fire3 = "Fire3";
+    private string nitro = "Nitro";
 	
 	void Awake ()
 	{
@@ -45,5 +46,8 @@ public class CarUserControlMP : MonoBehaviour
 
         bool fb = CrossPlatformInput.GetButtonDown(fire3);
         car.Fire(fb, ShellColors.Blue);
+
+        bool isUsingNitro = CrossPlatformInput.GetButton(nitro);
+        car.Nitro(isUsingNitro);
     }
 }
