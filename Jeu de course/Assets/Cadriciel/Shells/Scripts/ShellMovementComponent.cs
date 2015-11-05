@@ -13,23 +13,22 @@ class ShellMovementComponent : MonoBehaviour
         // Drop the shell to the ground
         RaycastHit groundCheckRaycast;
         int layerMask = 1 << 11;
+
+        // Raycast below the projectile to follow the ground
         if(Physics.Raycast(transform.position, -Vector3.up, out groundCheckRaycast, Mathf.Infinity, layerMask))
         {
             transform.position -= Vector3.up * (groundCheckRaycast.distance - transform.collider.bounds.extents.y);
-            /*
-            if((groundCheckRaycast.distance - transform.collider.bounds.extents.y) < 0)
-            {
-                //fallSpeed = 0.0f;
-                print("GOTEM");
-            }
-            /*
-            /*
-            else
-            {
-                transform.position -= Vector3.up * Mathf.Min(fallSpeed * Time.deltaTime, groundCheckRaycast.distance - transform.collider.bounds.extents.y);
-                fallSpeed += fallAcceleration * Time.deltaTime;
-            }
-            */
+        }
+        else if(Physics.Raycast(transform.position, Vector3.up, out groundCheckRaycast, Mathf.Infinity, layerMask))
+        {
+            transform.position += Vector3.up * (groundCheckRaycast.distance + transform.collider.bounds.extents.y);
+        }
+
+        // Raycast infront of the projectile to climb steep hills
+        float radiusOfProjectile = GetComponent<SphereCollider>().radius;
+        if(Physics.Raycast(transform.position, Vector3.forward, out groundCheckRaycast, radiusOfProjectile, layerMask))
+        {
+            transform.position -= Vector3.forward * (groundCheckRaycast.distance - transform.collider.bounds.extents.x);
         }
     }
 
@@ -40,7 +39,6 @@ class ShellMovementComponent : MonoBehaviour
 
         if(collision.gameObject.name == "Track")
         {
-            //shell.velocity = shell.velocity.normalized * shellVelocity;
             return;
         }
 
