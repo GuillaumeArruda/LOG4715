@@ -6,13 +6,6 @@ public class CarAccelerator : MonoBehaviour {
     private float AccelerationBonus = 20.0f;
     [SerializeField]
     private float AccelerationDuration = 3.0f;
-    void Start () {
-	
-	}
-
-	void Update () {
-	
-	}
 
     void OnCollisionEnter(Collision collision)
     {

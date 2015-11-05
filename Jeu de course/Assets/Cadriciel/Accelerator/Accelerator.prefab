@@ -11,7 +11,6 @@ GameObject:
   - 23: {fileID: 2304820}
   - 33: {fileID: 3374336}
   - 64: {fileID: 6480996}
-  - 114: {fileID: 11422046}
   - 114: {fileID: 11450246}
   m_Layer: 0
   m_Name: Accelerator
@@ -72,19 +71,6 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &11422046
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 126954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfecf990e6d98824abdb99dd495ede80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AccelerationBonus: 30
-  AccelerationDuration: 3
 --- !u!114 &11450246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -96,8 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfecf990e6d98824abdb99dd495ede80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AccelerationBonus: 20
-  AccelerationDuration: 3
+  AccelerationBonus: 40
+  AccelerationDuration: 2
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
