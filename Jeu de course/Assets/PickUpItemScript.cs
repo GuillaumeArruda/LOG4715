@@ -117,10 +117,11 @@ public class PickUpItemScript : MonoBehaviour {
 
     private IEnumerator WaitThenRenable()
     {
-        Debug.Log("WTF");
-        gameObject.SetActive(false);
+        enabled = false;
+        renderer.enabled = false;
         yield return new WaitForSeconds(timeToRespawn);
-        gameObject.SetActive(true);
+        renderer.enabled = true;
+        enabled = true;
         ChooseType();
     }
 
