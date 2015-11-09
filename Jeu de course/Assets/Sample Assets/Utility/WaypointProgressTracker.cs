@@ -126,8 +126,8 @@ public class WaypointProgressTracker : MonoBehaviour {
 		}
 	}
 
-	public Vector3 getTargetPosition()
+	public Transform getTarget()
 	{
-		return target.position;
+		return target;
 	}
 }

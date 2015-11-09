@@ -22,10 +22,10 @@ public class PathIndicatorScript : MonoBehaviour {
 		pathBoxHeight = Screen.height / 7;
 	}
 	
-	public void UpdateWaypoint(Vector3 target) {
+	public void UpdateWaypoint(Transform target) {
 		// Get the next waypoint target to show on the GUI
 		// Ignore the Y coord to ignore height differences between 
-		Vector3 direction = target - car.position;
+		Vector3 direction = target.position - car.position;
 		direction.y = 0;
 
 		Vector3 carForward = car.forward;

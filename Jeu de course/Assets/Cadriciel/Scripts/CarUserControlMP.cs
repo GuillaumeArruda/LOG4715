@@ -8,6 +8,7 @@ public class CarUserControlMP : MonoBehaviour
     private NitroScript nitroScript;
 	private SpeedMeterScript speedMeterScript;
 	private PathIndicatorScript pathIndicatorScript;
+	private RespawnScript respawnScript;
 
 	[SerializeField]
 	private string vertical = "Vertical";
@@ -31,6 +32,7 @@ public class CarUserControlMP : MonoBehaviour
 		nitroScript = GetComponent<NitroScript>();
 		speedMeterScript = GetComponent<SpeedMeterScript>();
 		pathIndicatorScript = GetComponent<PathIndicatorScript>();
+		respawnScript = GetComponent<RespawnScript>();
 	}
 	
 	void FixedUpdate()
@@ -67,6 +69,8 @@ public class CarUserControlMP : MonoBehaviour
 
 		speedMeterScript.UpdateSpeed (car.CurrentSpeed, car.MaxSpeed);
 
-		pathIndicatorScript.UpdateWaypoint (car.GetComponent<WaypointProgressTracker> ().getTargetPosition());
+		pathIndicatorScript.UpdateWaypoint (car.GetComponent<WaypointProgressTracker> ().getTarget());
+
+		respawnScript.UpdateWaypoint (car.GetComponent<WaypointProgressTracker> ().getTarget());
     }
 }
