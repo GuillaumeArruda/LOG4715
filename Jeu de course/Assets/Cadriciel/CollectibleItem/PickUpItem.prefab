@@ -1,50 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &116126
+--- !u!1 &116774
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 416126}
-  - 33: {fileID: 3316126}
-  - 135: {fileID: 13516126}
-  - 23: {fileID: 2316126}
-  - 54: {fileID: 5434202}
-  - 114: {fileID: 11454860}
-  m_Layer: 12
-  m_Name: BlueShell
+  - 4: {fileID: 416774}
+  - 33: {fileID: 3316774}
+  - 65: {fileID: 6516774}
+  - 23: {fileID: 2316774}
+  - 114: {fileID: 11428242}
+  m_Layer: 0
+  m_Name: PickUpItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &416126
+--- !u!4 &416774
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116126}
+  m_GameObject: {fileID: 116774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.71972656, y: .573158264, z: 9.97128296}
+  m_LocalPosition: {x: -378.799988, y: -18, z: 182.600006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!23 &2316126
+--- !u!23 &2316774
 Renderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116126}
+  m_GameObject: {fileID: 116774}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 1cfb40bbcbfe9974a9b112fa38c81848, type: 2}
+  - {fileID: 2100000, guid: f29f76325dffb124e8f65a87297a9754, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -52,57 +51,47 @@ Renderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &3316126
+--- !u!33 &3316774
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116126}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &5434202
-Rigidbody:
+  m_GameObject: {fileID: 116774}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6516774
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116126}
+  m_GameObject: {fileID: 116774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &11454860
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11428242
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116126}
+  m_GameObject: {fileID: 116774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fabff887e53a0334daf988ae1b408f43, type: 3}
+  m_Script: {fileID: 11500000, guid: 707da6d8e22db9c47ac8628843e6acc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shellVelocity: 100
-  m_rotationSpeed: 0
-  m_maxNumberOfBounces: 10000
-  m_maxTimeAlive: 10
-  destroyParticleSystem: {fileID: 19862976, guid: 5350422e6ce58b54b83621f6f12bf224,
-    type: 2}
---- !u!135 &13516126
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 116126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: .5
-  m_Center: {x: 0, y: 0, z: 0}
+  probabilityToBeGreenShell: 20
+  probabilityToBeRedShell: 15
+  probabilityToBeBlueShell: 1
+  probabilityToBeRepair: 20
+  probabilityToBeNitro: 20
+  textures:
+    GreenShellTexture: {fileID: 2800000, guid: f5322fe789a4aa84fb428f62d4dee636, type: 3}
+    RedShellTexture: {fileID: 2800000, guid: eeb4f80a286a1c748918e0b7490aef2f, type: 3}
+    BlueShellTexture: {fileID: 2800000, guid: 888268dfddc4cda4faf40fbb6c733965, type: 3}
+    RepairTexture: {fileID: 2800000, guid: 60c12eab9a008104fac166ee967ed970, type: 3}
+    NitroTexture: {fileID: 2800000, guid: 471dfca436f486a4abc620cb9918331e, type: 3}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -112,6 +101,6 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 116126}
+  m_RootGameObject: {fileID: 116774}
   m_IsPrefabParent: 1
   m_IsExploded: 1

@@ -92,20 +92,20 @@ public class DamageScript : MonoBehaviour {
 			// 100-medium
 			DamageFactor = 1.0f;
 			damageStatus = DamageStatus.GoodHealth;
-			damageText.color = Color.green;
 			damageText.text = "Bonne condition";
+			damageText.color = Color.green;
 		} else if (healthRatio > lowHealthRatio) {
 			// medium-low
 			DamageFactor = mediumHealthFactor;
 			damageStatus = DamageStatus.MediumHealth;
-			damageText.color = Color.yellow;
 			damageText.text = "Moyenne condition";
+			damageText.color = Color.yellow;
 		} else {
 			//low-broken
 			DamageFactor = lowHealthFactor;
 			damageStatus = DamageStatus.LowHealth;
-			damageText.color = Color.red;
 			damageText.text = "Mauvaise condition";
+			damageText.color = Color.red;
 		}
 	}
 

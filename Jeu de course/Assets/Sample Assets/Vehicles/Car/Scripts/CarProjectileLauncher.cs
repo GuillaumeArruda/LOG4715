@@ -120,10 +120,18 @@ class CarProjectileLauncher : MonoBehaviour
             case ShellColors.Blue:
                 // Acquire target which is the car in first position
                 GameObject gameManager = GameObject.Find("Game Manager");
-                shellMoveComp.Target = gameManager.GetComponent<RaceManager>().GetFirstPlaceCar();
+                GameObject shellTarget = gameManager.GetComponent<RaceManager>().GetFirstPlaceCar();
+                if(shellTarget != gameObject)
+                {
+                    shellMoveComp.Target = shellTarget;
+                }
                 break;
         }
     }
+
+	void FixedUpdate() {
+		UpdateAmmo ();
+	}
 
 	private void UpdateAmmo() {
 		BlueShellAmmoText.text 	= ((int)BlueShellAmmo).ToString ("D2") + "x";
@@ -133,8 +141,8 @@ class CarProjectileLauncher : MonoBehaviour
 
 	public void OnGUI()
 	{
-		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2), 25, 25), BlueShellIcon);
-		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2)- 30, 25, 25), RedShellIcon);
-		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2)- 60, 25, 25), GreenShellIcon);
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) + 45, 25, 25), BlueShellIcon);
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) + 15, 25, 25), RedShellIcon);
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) - 15, 25, 25), GreenShellIcon);
 	}
 }
