@@ -11,6 +11,7 @@ public class WaypointProgressTracker : MonoBehaviour {
 	[SerializeField] public WaypointCircuit circuit;         // A reference to the waypoint-based route we should follow
 	
 	[SerializeField] float lookAheadForTargetOffset = 5;		// The offset ahead along the route that the we will aim for
+	[SerializeField] float lookAheadForIndicatorTargetOffset = 2;		// The offset ahead along the route that the we will aim for
 	[SerializeField] float lookAheadForTargetFactor = .1f;      // A multiplier adding distance ahead along the route to aim for, based on current speed
 	[SerializeField] float lookAheadForSpeedOffset = 10;		// The offset ahead only the route for speed adjustments (applied as the rotation of the waypoint target transform)
 	[SerializeField] float lookAheadForSpeedFactor = .2f;  		// A multiplier adding distance ahead along the route for speed adjustments
@@ -30,6 +31,7 @@ public class WaypointProgressTracker : MonoBehaviour {
 	public WaypointCircuit.RoutePoint progressPoint { get; private set; }
 
 	public Transform target;
+	public Transform[] indicatorTarget;
 
 	public float progressDistance;			// The progress round the route, used in smooth mode.
 	private int progressNum;				// the current waypoint number, used in point-to-point mode.
@@ -50,6 +52,12 @@ public class WaypointProgressTracker : MonoBehaviour {
 		{
 			target = new GameObject(name+" Waypoint Target").transform;
 		}
+
+        indicatorTarget = new Transform[10];
+        for(int i = 0; i < 10; ++i)
+        {
+            indicatorTarget[i] = new GameObject(name+" Waypoint Indicator Target " + i.ToString()).transform;
+        }
 
 		Reset ();
 
@@ -82,6 +90,11 @@ public class WaypointProgressTracker : MonoBehaviour {
 			target.position = circuit.GetRoutePoint( progressDistance + lookAheadForTargetOffset + lookAheadForTargetFactor * speed ).position;
 			target.rotation = Quaternion.LookRotation( circuit.GetRoutePoint( progressDistance + lookAheadForSpeedOffset + lookAheadForSpeedFactor * speed ).direction );
 
+            for(int i = 0; i < 10; ++i)
+            {
+                indicatorTarget[i].position = circuit.GetRoutePoint( progressDistance + i * lookAheadForIndicatorTargetOffset + lookAheadForTargetFactor * speed ).position;
+                indicatorTarget[i].rotation = Quaternion.LookRotation( circuit.GetRoutePoint( progressDistance + lookAheadForSpeedOffset + lookAheadForSpeedFactor * speed ).direction );
+            }
 
 			// get our current progress along the route
 			progressPoint = circuit.GetRoutePoint( progressDistance );
@@ -128,6 +141,21 @@ public class WaypointProgressTracker : MonoBehaviour {
 
 	public Transform getTarget()
 	{
+		return target;
+	}
+
+	public Transform getIndicatorTarget()
+	{
+		Transform target = new GameObject(name+" Waypoint Target").transform;
+
+        Vector3 position = Vector3.zero;
+        for(int i = 0; i < 10; ++i)
+        {
+            position += indicatorTarget[i].position;
+        }
+        target.position = position / 10.0f;
+        target.rotation = indicatorTarget[5].rotation;
+
 		return target;
 	}
 }

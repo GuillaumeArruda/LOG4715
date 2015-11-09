@@ -69,7 +69,7 @@ public class CarUserControlMP : MonoBehaviour
 
 		speedMeterScript.UpdateSpeed (car.CurrentSpeed, car.MaxSpeed);
 
-		pathIndicatorScript.UpdateWaypoint (car.GetComponent<WaypointProgressTracker> ().getTarget());
+		pathIndicatorScript.UpdateWaypoint (car.GetComponent<WaypointProgressTracker> ().getIndicatorTarget());
 
 		respawnScript.UpdateWaypoint (car.GetComponent<WaypointProgressTracker> ().getTarget());
     }
