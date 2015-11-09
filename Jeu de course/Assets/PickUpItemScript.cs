@@ -89,8 +89,9 @@ public class PickUpItemScript : MonoBehaviour {
     {
         if(other.gameObject.layer == LayerMask.NameToLayer("Vehicles"))
         {
-            if(other.gameObject.name == "Joueur1")
+            if (other.collider.transform.parent.gameObject.transform.parent.gameObject.name == "Joueur 1")
             {
+                Debug.Log("POURQUOI JE SAIS PAS LIRE");
                 switch (type)
                 {
                     case TypeOfPickUp.GreenShell:
@@ -117,11 +118,13 @@ public class PickUpItemScript : MonoBehaviour {
 
     private IEnumerator WaitThenRenable()
     {
+        collider.enabled = false;
         enabled = false;
         renderer.enabled = false;
         yield return new WaitForSeconds(timeToRespawn);
         renderer.enabled = true;
         enabled = true;
+        collider.enabled = true;
         ChooseType();
     }
 
