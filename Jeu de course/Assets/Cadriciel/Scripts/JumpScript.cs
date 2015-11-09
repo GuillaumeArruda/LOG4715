@@ -16,25 +16,38 @@ public class JumpScript : MonoBehaviour {
     [SerializeField]
     float airControlUpAxis = 120.0f;
 
+    [SerializeField] float minJumpHeightForScore = 5.0f;
+    [SerializeField] float scorePerSecondsForHighJump = 100f;
+    [SerializeField] float scorePerSecondsForAirControl = 100f;
+
     private Transform car;
 
     private bool isFalling;
     private bool isInTheAir;
     public bool JumpButtonDown { get; set; }
     public bool JumpButton { get; set; }
+    public float Score { get; set; }
     private bool isJumping;
+    private const int vehiclesLayer = 8;
+    public GUIText scoreText;
 
 	// Use this for initialization
 	void Start () {
         car = GetComponent<Transform>();
+        Score = 0;
 	}
 	
-    public void AirControl(float h, float v, float r){
+    public void AirControl(float h, float v, float r, float time){
         if (isInTheAir)
         {
             car.Rotate(Vector3.right, v * airControlRightAxis * Time.fixedDeltaTime);
             car.Rotate(Vector3.up, h * airControlUpAxis * Time.fixedDeltaTime);
             car.Rotate(Vector3.forward, r * airControlFowardAxis * Time.fixedDeltaTime);
+
+            if((r != 0.0f) || (h != 0.0f) || (v != 0.0f))
+            {
+                Score += time * scorePerSecondsForAirControl;
+            }
         }
     }
 
@@ -49,6 +62,20 @@ public class JumpScript : MonoBehaviour {
             StartCoroutine("JumpCoroutine");
             isJumping = true;
         }
+        
+        if(isInTheAir)
+        {
+            // Make it so if we jump high enough we get more score
+            RaycastHit jumpHeightRaycast;
+            Physics.Raycast(transform.position, -Vector3.up, out jumpHeightRaycast, Mathf.Infinity, layerMask);
+            if(jumpHeightRaycast.distance > minJumpHeightForScore)
+            {
+                Score += scorePerSecondsForHighJump * Time.deltaTime; 
+            }
+        }
+
+        // Update score
+        scoreText.text = "Score : " + ((int)Score).ToString("D5");
 	}
 
     IEnumerator JumpCoroutine(){

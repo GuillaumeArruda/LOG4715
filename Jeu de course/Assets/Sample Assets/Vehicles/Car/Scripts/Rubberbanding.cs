@@ -12,12 +12,10 @@ class Rubberbanding : MonoBehaviour
         if(positionOfCar >= rubberBandingHelpPosition)
         {
             MaxSpeedMultiplier = maxSpeedRubberBandingMultiplier;
-            print("ON");
         }
         else
         {
             MaxSpeedMultiplier = 1.0f;
-            print("OFF");
         }
     }
 

@@ -34,11 +34,11 @@ public class SpeedMeterScript : MonoBehaviour {
 	public void OnGUI()
 	{
 		// Base Meter
-		GUI.DrawTexture(new Rect((Screen.width - speedMeterWidth), (Screen.height - speedMeterHeight), speedMeterWidth, speedMeterHeight), speedMeterEmpty);
+		GUI.DrawTexture(new Rect(0, (Screen.height - speedMeterHeight), speedMeterWidth, speedMeterHeight), speedMeterEmpty);
 
 		// Speed Needle
-		pivotPoint = new Vector2 ((Screen.width - (speedMeterWidth / 2)), (Screen.height - speedMeterHeight/20));
+		pivotPoint = new Vector2 (speedMeterWidth / 2, (Screen.height - speedMeterHeight/20));
 		GUIUtility.RotateAroundPivot(speedDegSpin, pivotPoint);
-		GUI.DrawTexture (new Rect ((Screen.width - (speedMeterWidth / 2)), (Screen.height - speedMeterHeight/10), -0.90f * speedMeterHeight, speedMeterHeight/10), speedMeterBar);
+		GUI.DrawTexture (new Rect (speedMeterWidth / 2, (Screen.height - speedMeterHeight/10), -0.90f * speedMeterHeight, speedMeterHeight/10), speedMeterBar);
 	}
 }
