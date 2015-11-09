@@ -8969,12 +8969,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 420405169}
   lookAheadForTargetOffset: 15
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .100000001
   progressStyle: 0
   pointToPointThreshold: .200000003
   target: {fileID: 0}
+  indicatorTarget: []
   progressDistance: 0
 --- !u!114 &481286562
 MonoBehaviour:
@@ -19134,12 +19136,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
+  lookAheadForIndicatorTargetOffset: 2
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
   progressStyle: 0
   pointToPointThreshold: .200000003
   target: {fileID: 538390539}
+  indicatorTarget: []
   progressDistance: 0
 --- !u!114 &981142455
 MonoBehaviour:
@@ -28116,12 +28120,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
+  lookAheadForIndicatorTargetOffset: 2
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
   progressStyle: 0
   pointToPointThreshold: .200000003
   target: {fileID: 2102328285}
+  indicatorTarget: []
   progressDistance: 0
 --- !u!114 &1368033984
 MonoBehaviour:
@@ -32208,12 +32214,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 4637037}
   lookAheadForTargetOffset: 15
+  lookAheadForIndicatorTargetOffset: 2
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
   progressStyle: 0
   pointToPointThreshold: .200000003
   target: {fileID: 2020534729}
+  indicatorTarget: []
   progressDistance: 0
 --- !u!114 &1635867387
 MonoBehaviour:
@@ -36000,12 +36008,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 4637037}
   lookAheadForTargetOffset: 15
+  lookAheadForIndicatorTargetOffset: 2
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
   progressStyle: 0
   pointToPointThreshold: .200000003
   target: {fileID: 1813751279}
+  indicatorTarget: []
   progressDistance: 0
 --- !u!114 &1881066734
 MonoBehaviour:
@@ -40487,12 +40497,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
+  lookAheadForIndicatorTargetOffset: 2
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
   progressStyle: 0
   pointToPointThreshold: .200000003
   target: {fileID: 1122109683}
+  indicatorTarget: []
   progressDistance: 0
 --- !u!114 &2042105155
 MonoBehaviour:
@@ -41528,12 +41540,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
+  lookAheadForIndicatorTargetOffset: 2
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
   progressStyle: 0
   pointToPointThreshold: .200000003
   target: {fileID: 64215991}
+  indicatorTarget: []
   progressDistance: 0
 --- !u!114 &2099699821
 MonoBehaviour:
