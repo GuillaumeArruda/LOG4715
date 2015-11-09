@@ -50,7 +50,10 @@ public class NitroScript : MonoBehaviour {
     {
         isUsingNitro = nitro;
     }
-
+    public void FillNitro()
+    {
+        nitroRemaining = nitroMaxCapacity;
+    }
     public void OnGUI()
     {
         GUI.DrawTexture(new Rect((Screen.width - nitroBarWidth/2) / 4, (Screen.height - nitroBarHeight + 20), nitroBarWidth, nitroBarHeight), nitroEmptyBar);
