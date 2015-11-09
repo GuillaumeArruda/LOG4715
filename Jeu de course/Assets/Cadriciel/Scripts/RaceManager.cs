@@ -110,4 +110,21 @@ public class RaceManager : MonoBehaviour
 
         return firstPlaceCar;
     }
+
+    public int GetPositionOfCar(GameObject car)
+    {
+        GameObject cars = GameObject.Find("Cars");
+        int numberOfCarsAhead = 0;
+        float progress = car.GetComponent<WaypointProgressTracker>().progressDistance;
+
+        foreach(WaypointProgressTracker progressTracker in cars.GetComponentsInChildren<WaypointProgressTracker>())
+        {
+            if(progressTracker.progressDistance > progress)
+            {
+                ++numberOfCarsAhead;
+            }
+        }
+
+        return numberOfCarsAhead + 1;
+    }
 }

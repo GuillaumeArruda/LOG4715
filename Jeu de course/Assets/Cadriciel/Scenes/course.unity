@@ -8589,6 +8589,7 @@ GameObject:
   - 114: {fileID: 481286556}
   - 114: {fileID: 481286558}
   - 114: {fileID: 481286561}
+  - 114: {fileID: 481286562}
   m_Layer: 8
   m_Name: Joueur 1
   m_TagString: Player
@@ -8825,6 +8826,19 @@ MonoBehaviour:
   pointToPointThreshold: .200000003
   target: {fileID: 0}
   progressDistance: 0
+--- !u!114 &481286562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481286549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27971f689b1c694eb15eae294540725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeedRubberBandingMultiplier: 1.5
+  rubberBandingHelpPosition: 1
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0

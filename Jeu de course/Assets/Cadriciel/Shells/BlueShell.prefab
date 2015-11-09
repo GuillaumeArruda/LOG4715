@@ -85,9 +85,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fabff887e53a0334daf988ae1b408f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_shellVelocity: 60
+  m_shellVelocity: 100
   m_rotationSpeed: 0
   m_maxNumberOfBounces: 10000
+  m_maxTimeAlive: 10
 --- !u!135 &13516126
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -222,8 +222,15 @@ public class CarController : MonoBehaviour
 	{
 		// current speed is measured in the forward direction of the car (sliding sideways doesn't count!)
 		CurrentSpeed = transform.InverseTransformDirection (rigidbody.velocity).z;
-		// speedfactor is a normalized representation of speed in relation to max speed:
-		SpeedFactor = Mathf.InverseLerp (0, reversing ? maxReversingSpeed : maxSpeed, Mathf.Abs (CurrentSpeed));
+        // speedfactor is a normalized representation of speed in relation to max speed:
+        float rubberBandingFactor = 1.0f;
+        Rubberbanding rubberbandingComp = GetComponent<Rubberbanding>();
+        if(rubberbandingComp != null)
+        {
+            rubberBandingFactor = rubberbandingComp.MaxSpeedMultiplier;
+        }
+
+		SpeedFactor = Mathf.InverseLerp (0, reversing ? maxReversingSpeed : maxSpeed * rubberBandingFactor, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
 	}
 
@@ -278,7 +285,14 @@ public class CarController : MonoBehaviour
 			if (wheel.powered) {
 				// apply power to wheels marked as powered:
 				// available torque drops off as we approach max speed
-				var currentMaxTorque = Mathf.Lerp (maxTorque, (SpeedFactor < 1) ? minTorque : 0, reversing ? SpeedFactor : curvedSpeedFactor);
+                float rubberBandingFactor = 1.0f;
+                Rubberbanding rubberbandingComp = GetComponent<Rubberbanding>();
+                if(rubberbandingComp != null)
+                {
+                    rubberBandingFactor = rubberbandingComp.MaxSpeedMultiplier;
+                }
+
+				var currentMaxTorque = Mathf.Lerp (maxTorque * rubberBandingFactor, (SpeedFactor < 1) ? minTorque : 0, reversing ? SpeedFactor : curvedSpeedFactor);
 				wheelCollider.motorTorque = AccelInput * currentMaxTorque;
 				// accumulate RPM from this wheel, for averaging later
 				AvgPowerWheelRpmFactor += wheel.Rpm / wheel.MaxRpm;
