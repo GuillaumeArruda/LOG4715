@@ -15,7 +15,7 @@ class ShellMovementComponent : MonoBehaviour
     void Update()
     {
         RaycastHit groundCheckRaycast;
-        int layerMask = 1 << 11;
+        int layerMask = LayerMask.GetMask("Track");
 
         m_timeAlive += Time.deltaTime;
         if(m_timeAlive > m_maxTimeAlive)
@@ -132,6 +132,7 @@ class ShellMovementComponent : MonoBehaviour
         {
             transform.forward = transform.forward - 2 * Vector3.Dot(transform.forward, contact.normal) * contact.normal;
             transform.forward = Vector3.Normalize(new Vector3(transform.forward.x, 0.0f, transform.forward.z));
+            transform.position += transform.forward * 2.0f;
             shell.velocity = transform.forward * m_shellVelocity;
 
             if(++m_currentNumberOfBounces > m_maxNumberOfBounces)
