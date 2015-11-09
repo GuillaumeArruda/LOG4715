@@ -39,12 +39,14 @@ public class RespawnScript : MonoBehaviour {
 			timeFlipped = 0.0f;
 		}
 
-		// Get the next waypoint target to calculate distance
-		Vector3 direction = target.position - car.position;
-		direction.y = 0;
+		if (target != null) {
+			// Get the next waypoint target to calculate distance
+			Vector3 direction = target.position - car.position;
+			direction.y = 0;
 		
-		if (direction.magnitude > distanceToWaypointBeforeRespawn) {
-			Respawn();
+			if (direction.magnitude > distanceToWaypointBeforeRespawn) {
+				Respawn ();
+			}
 		}
 	}
 
