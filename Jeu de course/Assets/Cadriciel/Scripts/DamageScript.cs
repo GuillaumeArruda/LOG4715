@@ -5,9 +5,6 @@ public class DamageScript : MonoBehaviour {
 	
 	private float currentHealth;
 	private float maxHealth = 100.0f;
-
-	const int shellsLayer = 7;
-	const int vehiclesLayer = 8;
 	
 	[SerializeField]
 	private float damageMultiplier = 1.0f; // Higher multiplier means damage taken will increase
@@ -32,6 +29,8 @@ public class DamageScript : MonoBehaviour {
 	[SerializeField]
 	private float lowHealthFactor = 0.6f;
 
+	public GUIText damageText;
+
 	public enum DamageStatus
 	{
 		GoodHealth,
@@ -43,18 +42,18 @@ public class DamageScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		currentHealth = maxHealth;
-		damageStatus = DamageStatus.GoodHealth;
+		UpdateDamageFactor ();
 	}
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if(collision.gameObject.name == "Track")
+		if(((1 << collision.gameObject.layer) & LayerMask.GetMask("Track")) > 0)
 		{
 			return;
 		}
 
 		// Collision with a vehicle
-		if((collision.gameObject.layer & vehiclesLayer) > 0)
+		if(((1 << collision.gameObject.layer) & LayerMask.GetMask("Vehicles")) > 0)
 		{
 			currentHealth -= damageFromVehicleCollision * damageMultiplier;
 			UpdateDamageFactor();
@@ -62,17 +61,20 @@ public class DamageScript : MonoBehaviour {
 		}
 
 		// Collision with a shell
-		if((collision.gameObject.layer & shellsLayer) > 0)
+		if(((1 << collision.gameObject.layer) & LayerMask.GetMask("Shell")) > 0)
 		{
 			switch (collision.gameObject.name)
 			{
-			case "Red Shell":
+			case "RedShell":
+			case "RedShell(Clone)":
 				currentHealth -= damageFromRedShellCollision * damageMultiplier;
 				break;
-			case "Green Shell":
+			case "GreenShell":
+			case "GreenShell(Clone)":
 				currentHealth -= damageFromGreenShellCollision * damageMultiplier;
 				break;
-			case "Blue Shell":
+			case "BlueShell":
+			case "BlueShell(Clone)":
 				currentHealth -= damageFromBlueShellCollision * damageMultiplier;
 				break;
 			default:
@@ -90,14 +92,20 @@ public class DamageScript : MonoBehaviour {
 			// 100-medium
 			DamageFactor = 1.0f;
 			damageStatus = DamageStatus.GoodHealth;
+			damageText.color = Color.green;
+			damageText.text = "Bonne condition";
 		} else if (healthRatio > lowHealthRatio) {
 			// medium-low
 			DamageFactor = mediumHealthFactor;
 			damageStatus = DamageStatus.MediumHealth;
+			damageText.color = Color.yellow;
+			damageText.text = "Moyenne condition";
 		} else {
 			//low-broken
 			DamageFactor = lowHealthFactor;
 			damageStatus = DamageStatus.LowHealth;
+			damageText.color = Color.red;
+			damageText.text = "Mauvaise condition";
 		}
 	}
 
