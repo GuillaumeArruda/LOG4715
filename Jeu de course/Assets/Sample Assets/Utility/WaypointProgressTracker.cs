@@ -125,4 +125,9 @@ public class WaypointProgressTracker : MonoBehaviour {
 			Gizmos.DrawLine( target.position, target.position + target.forward );
 		}
 	}
+
+	public Vector3 getTargetPosition()
+	{
+		return target.position;
+	}
 }

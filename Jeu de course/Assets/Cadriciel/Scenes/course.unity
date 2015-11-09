@@ -8827,7 +8827,7 @@ MonoBehaviour:
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .100000001
-  progressStyle: 0
+  progressStyle: 1
   pointToPointThreshold: .200000003
   target: {fileID: 0}
   progressDistance: 0
