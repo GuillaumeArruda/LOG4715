@@ -1628,8 +1628,8 @@ MonoBehaviour:
   nitroAccelerationBonus: 20
   expenditureRate: 20
   nitroMaxCapacity: 100
-  nitroEmptyBar: {fileID: 0}
-  nitroFullBar: {fileID: 0}
+  nitroEmptyBar: {fileID: 2800000, guid: 3cae02495b88d2d4fbf19382b7993691, type: 3}
+  nitroFullBar: {fileID: 2800000, guid: 8e73424fe72829843b4bc494b0e656dc, type: 3}
 --- !u!114 &11491710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1643,6 +1643,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpDuration: .200000003
   jumpForceInTheAir: 120
+  airControlFowardAxis: 120
+  airControlRightAxis: 120
+  airControlUpAxis: 120
+  minJumpHeightForScore: 5
+  scorePerSecondsForHighJump: 100
+  scorePerSecondsForAirControl: 100
+  scoreText: {fileID: 0}
 --- !u!146 &14600000
 WheelCollider:
   m_ObjectHideFlags: 1
