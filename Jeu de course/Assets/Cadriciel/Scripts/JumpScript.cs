@@ -75,7 +75,7 @@ public class JumpScript : MonoBehaviour {
         }
 
         // Update score
-        scoreText.text = "Score : " + ((int)Score).ToString("D5");
+        scoreText.text = "Score : " + ((int)Score).ToString("D6");
 	}
 
     IEnumerator JumpCoroutine(){

@@ -86,9 +86,14 @@ public class WaypointProgressTracker : MonoBehaviour {
 			// get our current progress along the route
 			progressPoint = circuit.GetRoutePoint( progressDistance );
 			Vector3 progressDelta = progressPoint.position-transform.position;
-			if (Vector3.Dot(progressDelta,progressPoint.direction) < 0) {
+			if (Vector3.Dot(progressDelta,progressPoint.direction) < 0 ) {
 				progressDistance += progressDelta.magnitude * 0.5f;
 			}
+
+            if(gameObject.name == "Joueur 1")
+            {
+                print(progressDistance);
+            }
 
 			lastPosition = transform.position;
 		} else {
