@@ -230,6 +230,12 @@ public class CarController : MonoBehaviour
             rubberBandingFactor = rubberbandingComp.MaxSpeedMultiplier;
         }
 
+		float damageFactor = 1.0f;
+		DamageScript damageScript = GetComponent<DamageScript> ();
+		if (damageScript != null) {
+
+		}
+
 		SpeedFactor = Mathf.InverseLerp (0, reversing ? maxReversingSpeed : maxSpeed * rubberBandingFactor, Mathf.Abs (CurrentSpeed));
 		curvedSpeedFactor = reversing ? 0 : CurveFactor (SpeedFactor);
 	}

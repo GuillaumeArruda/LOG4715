@@ -29,6 +29,7 @@ public class RespawnScript : MonoBehaviour {
 			Respawn();
 		}
 
+		// Check if the car is upside down
 		if (Vector3.Angle (car.up, Vector3.up) > 90.0f) {
 			timeFlipped += Time.fixedDeltaTime;
 
@@ -39,6 +40,7 @@ public class RespawnScript : MonoBehaviour {
 			timeFlipped = 0.0f;
 		}
 
+		// Check the distance between
 		if (target != null) {
 			// Get the next waypoint target to calculate distance
 			Vector3 direction = target.position - car.position;
