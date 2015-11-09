@@ -1,0 +1,154 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Thin Sectioned Essay
+% LaTeX Template
+% Version 1.0 (3/8/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original Author:
+% Nicolas Diaz (nsdiaz@uc.cl) with extensive modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper, 12pt]{article} % Font size (can be 10pt, 11pt or 12pt) and paper size (remove a4paper for US letter paper)
+
+\usepackage[protrusion=true,expansion=true]{microtype} % Better typography
+\usepackage{graphicx} % Required for including pictures
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.0in]{geometry}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{enumitem}
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\usepackage[T1]{fontenc} % Required for accented characters
+\usepackage{times} % Use the Palatino font
+
+\usepackage{listings}
+\usepackage{color}
+\lstset{mathescape}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+   language=c++,
+   aboveskip=3mm,
+   belowskip=3mm,
+   showstringspaces=false,
+   columns=flexible,
+   basicstyle={\small\ttfamily},
+   numbers=none,
+   numberstyle=\tiny\color{gray},
+   keywordstyle=\color{blue},
+   commentstyle=\color{dkgreen},
+   stringstyle=\color{mauve},
+   breaklines=true,
+   breakatwhitespace=true
+   tabsize=3
+}
+\linespread{1.00} % Change line spacing here, Palatino benefits from a slight increase by default
+
+\makeatletter
+\renewcommand{\@listI}{\itemsep=0pt} % Reduce the space between items in the itemize and enumerate environments and the bibliography
+
+\renewcommand\abstractname{Résumé}
+\renewcommand\refname{Références}
+\renewcommand\contentsname{Table des matières}
+\renewcommand{\maketitle}{ % Customize the title - do not edit title and author name here, see the TITLE block below
+\begin{center} % Right align
+
+\vspace*{25pt} % Some vertical space between the title and author name
+{\LARGE\@title} % Increase the font size of the title
+
+\vspace{125pt} % Some vertical space between the title and author name
+
+{\large\@author} % Author name
+
+\vspace{125pt} % Some vertical space between the author block and abstract
+Dans le cadre du cours
+\\LOG4715 - Conception de jeux vidéo
+\vspace{125pt} % Some vertical space between the author block and abstract
+\\\@date % Date
+\vspace{125pt} % Some vertical space between the author block and abstract
+
+\end{center}
+}
+
+%----------------------------------------------------------------------------------------
+%	TITLE
+%----------------------------------------------------------------------------------------
+
+\title{TP2: Mécaniques de jeu} 
+
+\author{\textsc{Guillaume Arruda 1635805 \\ Raphael Lapierre 1644671 \\ Éric Morissette 1631103} % Author
+\vspace{10pt}
+\\{\textit{École polytechnique de Montréal}}} % Institution
+
+\date{9 Novembre 2015} % Date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\thispagestyle{empty}
+\clearpage\maketitle % Print the title section
+\pagebreak[4]
+%----------------------------------------------------------------------------------------
+%	En tête et pieds de page 
+%----------------------------------------------------------------------------------------
+
+\setlength{\headheight}{15.0pt}
+\pagestyle{fancy}
+\fancyhead[L]{LOG4715}
+\fancyhead[C]{}
+\fancyhead[R]{TP2 : Conception et implantation de mécanique de jeu}
+\fancyfoot[C]{\textbf{page \thepage}}
+
+%----------------------------------------------------------------------------------------
+%	ESSAY BODY
+%----------------------------------------------------------------------------------------
+\section{Entrepôt}
+L'entrepôt de la solution est disponible à l'adresse suivante: https://github.com/GuillaumeArruda/LOG4715
+
+\section{Mécaniques}
+\subsection{Points de style}
+La mécanique de point de style est implémenté dans le fichier JumpScript.cs. Elle donne des points lorsque le joueurs est dans les airs et utilise le contrôle aérien. Les points ne donnent rien au joueur excepté la satisfaction de voir un compteur monté.
+\subsection{Projectile rebondissant}
+\subsection{Projectile à tête chercheuse}
+\subsection{Projectile spécial}
+\subsection{Déformation élastique}
+La mécanique de déformation élastique est implémenté dans le fichier RubberBanding.cs.Elle accélère les véhicules dans les dernières positions pour éviter qu'un trop grand écart se crée dans la course.
+\subsection{Objets destructibles}
+La mécanique d'object destructible est implémentée dans le fichier DestructibleObjectScript.cs. Elle permet de détruire certains des murs à l'aide des différents projectiles dans le jeu. Les murs destructibles sont différenciés à l'aide d'une texture fissurée qui s'aggravent lorsqu'ils recoivent plus de la moitié des coups nécessaires à leur destruction.
+\subsection{Dommages au véhicule}
+La mécanique de dommage au véhicule est implémentée dans le fichier DamageScript.cs.Elle permet au véhicule de recevoir du dommage lorsqu'il collisionne avec un projectile ou un autre vehicule. Lorsque le véhicule est partiellement endommagé, sa vitesse maximale est légèrement réduite. S'il est très endommagé, la vitesse maximale est encore plus impactée. Si le vehicule est détruit, il est replacé sur la piste avec sa vie maximale.
+\subsection{Replacement}
+\subsection{Bonus accélérateurs}
+La mécanique de bonus accélérateurs est implémentée dans le fichier CarAccelerator.cs. Les accélérateurs accélèrent les véhicules qui les touches dans la direction où les véhicules font face.
+\subsection{Objets collectionnables}
+La mécanique d'objets collectionnables est implémentée dans le fichier PickUpItemScript.cs.Il y a 5 type d'objets qui peuvent être ramassés soient : projectile rebondissant, projectile tête chercheuse, projectile spécial, réparation et nitro. Certains des objets sont dans les airs pour forcer le joueur à faire une évaluation risque-récompense et tester les capacités de celui-ci.
+\subsection{Nitro}
+La mécanique de Nitro est implémentée dans le fichier NitroScript.cs. La nitro peut être utilisée dans les airs pour propulser le joueur dans la direction qu'il souhaite, permettant ainsi un controle aérien semblable a Rocket League. Elle se recharge automatiquement et utilise la touche shift.
+\subsection{Saut simple}
+La mécanique de saut simple est implémenté dans le fichier JumpScript.cs. Elle utilise la touche espace. Le saut permet d'éviter les collisions avec des projectiles et les autres véhicules. Elle permet aussi d'activer le contrôle aérien.
+\subsection{Orientation aérienne}
+La mécanique d'orientation aérienne est implémenté dans le fichier JumpScript.cs. Elle utilise les touches W,S pour le contrôle le long de l'axe des z, les touches A,D pour le contrôle le long de l'axe des y et Q,E pour le contrôle le long de l'axe des x. Elle permet au joueur de facilement contrôler le véhicule dans les airs pour favoriser l'utilisation de la Nitro.
+\subsection{Indications}
+\subsection{Jauge de vitesse}
+
+\vspace{10pt}
+%----------------------------------------------------------------------------------------
+\end{document}

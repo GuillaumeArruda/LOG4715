@@ -43,7 +43,6 @@ public class JumpScript : MonoBehaviour {
             car.Rotate(Vector3.right, v * airControlRightAxis * Time.fixedDeltaTime);
             car.Rotate(Vector3.up, h * airControlUpAxis * Time.fixedDeltaTime);
             car.Rotate(Vector3.forward, -r * airControlFowardAxis * Time.fixedDeltaTime);
-
             if((r != 0.0f) || (h != 0.0f) || (v != 0.0f))
             {
                 Score += time * scorePerSecondsForAirControl;

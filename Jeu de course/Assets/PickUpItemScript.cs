@@ -37,10 +37,12 @@ public class PickUpItemScript : MonoBehaviour {
 
     private int totalProbability;
     private TypeOfPickUp type;
-	// Use this for initialization
+    private bool hasBeenPickup;
+    // Use this for initialization
 	void Start () {
         totalProbability = probabilityToBeBlueShell + probabilityToBeGreenShell + probabilityToBeNitro + probabilityToBeRedShell + probabilityToBeRepair;
         ChooseType();
+        hasBeenPickup = false;
     }
 	
 	// Update is called once per frame
@@ -87,8 +89,9 @@ public class PickUpItemScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Vehicles"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Vehicles") && !hasBeenPickup)
         {
+            hasBeenPickup = true;
             if (other.collider.transform.parent.gameObject.transform.parent.gameObject.name == "Joueur 1")
             {
                 switch (type)
@@ -121,6 +124,7 @@ public class PickUpItemScript : MonoBehaviour {
         enabled = false;
         renderer.enabled = false;
         yield return new WaitForSeconds(timeToRespawn);
+        hasBeenPickup = false;
         renderer.enabled = true;
         enabled = true;
         collider.enabled = true;
