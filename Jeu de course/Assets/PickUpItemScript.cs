@@ -56,7 +56,6 @@ public class PickUpItemScript : MonoBehaviour {
             Type = TypeOfPickUp.GreenShell;
             return;
         }
-        Debug.Log(value);
         value -= probabilityToBeGreenShell;
         if(value <= probabilityToBeRedShell)
         {
@@ -88,9 +87,9 @@ public class PickUpItemScript : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if((other.gameObject.layer & LayerMask.NameToLayer("Vehicle")) > 0)
+        if(other.gameObject.layer == LayerMask.NameToLayer("Vehicles"))
         {
-            if ((other.gameObject.layer & LayerMask.NameToLayer("Player")) > 0)
+            if(other.gameObject.name == "Joueur1")
             {
                 switch (type)
                 {
@@ -110,6 +109,7 @@ public class PickUpItemScript : MonoBehaviour {
                         other.gameObject.GetComponentInParent<DamageScript>().ResetHealth();
                         break;
                 }
+
             }
             StartCoroutine("WaitThenRenable");
         }
@@ -117,10 +117,11 @@ public class PickUpItemScript : MonoBehaviour {
 
     private IEnumerator WaitThenRenable()
     {
-        enabled = false;
+        Debug.Log("WTF");
+        gameObject.SetActive(false);
         yield return new WaitForSeconds(timeToRespawn);
+        gameObject.SetActive(true);
         ChooseType();
-        enabled = true;
     }
 
     void SetAppropriateTexture()
