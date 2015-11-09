@@ -8590,6 +8590,7 @@ GameObject:
   - 114: {fileID: 481286558}
   - 114: {fileID: 481286561}
   - 114: {fileID: 481286562}
+  - 114: {fileID: 481286563}
   m_Layer: 8
   m_Name: Joueur 1
   m_TagString: Player
@@ -8839,6 +8840,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeedRubberBandingMultiplier: 1.5
   rubberBandingHelpPosition: 1
+--- !u!114 &481286563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481286549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42564b4d7f5be547822a659ddc08454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMeterEmpty: {fileID: 2800000, guid: efaaea7f6a25a4d4fafa9fce85bf947f, type: 3}
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
@@ -37331,6 +37344,7 @@ GameObject:
   - 114: {fileID: 1977983692}
   - 114: {fileID: 1977983693}
   - 114: {fileID: 1977983689}
+  - 114: {fileID: 1977983694}
   m_Layer: 8
   m_Name: Joueur 2
   m_TagString: Player
@@ -37530,6 +37544,18 @@ MonoBehaviour:
   airControlFowardAxis: 120
   airControlRightAxis: 120
   airControlUpAxis: 120
+--- !u!114 &1977983694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1977983683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c42564b4d7f5be547822a659ddc08454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMeterEmpty: {fileID: 2800000, guid: efaaea7f6a25a4d4fafa9fce85bf947f, type: 3}
 --- !u!1 &1988451985
 GameObject:
   m_ObjectHideFlags: 0

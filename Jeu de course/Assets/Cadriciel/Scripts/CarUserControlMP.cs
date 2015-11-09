@@ -6,6 +6,7 @@ public class CarUserControlMP : MonoBehaviour
 	private CarController car;  // the car controller we want to use
     private JumpScript jumpScript;
     private NitroScript nitroScript;
+	private SpeedMeterScript speedMeterScript;
 
 	[SerializeField]
 	private string vertical = "Vertical";
@@ -26,7 +27,8 @@ public class CarUserControlMP : MonoBehaviour
 		// get the car controller
 		car = GetComponent<CarController>();
         jumpScript = GetComponent<JumpScript>();
-        nitroScript = GetComponent<NitroScript>();
+		nitroScript = GetComponent<NitroScript>();
+		speedMeterScript = GetComponent<SpeedMeterScript>();
 	}
 	
 	void FixedUpdate()
@@ -60,5 +62,8 @@ public class CarUserControlMP : MonoBehaviour
 
         jumpScript.JumpButtonDown = CrossPlatformInput.GetButtonDown(jump);
         jumpScript.JumpButton = CrossPlatformInput.GetButton(jump);
+
+		speedMeterScript.UpdateSpeed (car.CurrentSpeed, car.MaxSpeed);
+
     }
 }
