@@ -94,13 +94,13 @@ public class PickUpItemScript : MonoBehaviour {
                 switch (type)
                 {
                     case TypeOfPickUp.GreenShell:
-                        //other.gameObject.GetComponentInParent<CarProjectileLauncher>().GreenShellAmmo++;
+                        other.gameObject.GetComponentInParent<CarProjectileLauncher>().GreenShellAmmo++;
                         break;
                     case TypeOfPickUp.RedShell:
-                        //other.gameObject.GetComponentInParent<CarProjectileLauncher>().RedShellAmmo++;
+                        other.gameObject.GetComponentInParent<CarProjectileLauncher>().RedShellAmmo++;
                         break;
                     case TypeOfPickUp.BlueShell:
-                        //other.gameObject.GetComponentInParent<CarProjectileLauncher>().BlueShellAmmo++;
+                        other.gameObject.GetComponentInParent<CarProjectileLauncher>().BlueShellAmmo++;
                         break;
                     case TypeOfPickUp.Nitro:
                         other.gameObject.GetComponentInParent<NitroScript>().FillNitro();
