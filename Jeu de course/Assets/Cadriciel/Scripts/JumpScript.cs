@@ -42,7 +42,7 @@ public class JumpScript : MonoBehaviour {
         {
             car.Rotate(Vector3.right, v * airControlRightAxis * Time.fixedDeltaTime);
             car.Rotate(Vector3.up, h * airControlUpAxis * Time.fixedDeltaTime);
-            car.Rotate(Vector3.forward, r * airControlFowardAxis * Time.fixedDeltaTime);
+            car.Rotate(Vector3.forward, -r * airControlFowardAxis * Time.fixedDeltaTime);
 
             if((r != 0.0f) || (h != 0.0f) || (v != 0.0f))
             {
@@ -57,7 +57,7 @@ public class JumpScript : MonoBehaviour {
         int layerMask = 1 << 11;
         Physics.Raycast(transform.position, -Vector3.up, out groundCheckRaycast, Mathf.Infinity, layerMask);
         isFalling = groundCheckRaycast.distance > 0.10;
-        isInTheAir = groundCheckRaycast.distance > 0.50;
+        isInTheAir = groundCheckRaycast.distance > 0.70;
 	    if(JumpButtonDown && !isJumping && !isFalling) {
             StartCoroutine("JumpCoroutine");
             isJumping = true;

@@ -164,7 +164,7 @@ public class CarController : MonoBehaviour
 		ProcessWheels (steerInput);
         ApplyDownforce ();
 		CalculateRevs();
-		PreserveDirectionInAir();
+		//PreserveDirectionInAir();
 
 	}
 
