@@ -91,7 +91,6 @@ public class PickUpItemScript : MonoBehaviour {
         {
             if (other.collider.transform.parent.gameObject.transform.parent.gameObject.name == "Joueur 1")
             {
-                Debug.Log("POURQUOI JE SAIS PAS LIRE");
                 switch (type)
                 {
                     case TypeOfPickUp.GreenShell:

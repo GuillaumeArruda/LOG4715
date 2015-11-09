@@ -23,7 +23,7 @@ public class DestructibleObjectScript : MonoBehaviour {
 
     void OnCollisionEnter(Collision other)
     {
-        if((other.gameObject.layer & LayerMask.NameToLayer("Shell")) > 0)
+        if((other.gameObject.layer  == LayerMask.NameToLayer("Shell")))
         {
             ++numberOfHitReceived;
             renderer.material.mainTexture = HalfHealthTexture;
