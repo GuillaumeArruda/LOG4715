@@ -132,6 +132,7 @@ class ShellMovementComponent : MonoBehaviour
         {
             transform.forward = transform.forward - 2 * Vector3.Dot(transform.forward, contact.normal) * contact.normal;
             transform.forward = Vector3.Normalize(new Vector3(transform.forward.x, 0.0f, transform.forward.z));
+            transform.position += transform.forward * 2.0f;
             shell.velocity = transform.forward * m_shellVelocity;
 
             if(++m_currentNumberOfBounces > m_maxNumberOfBounces)
