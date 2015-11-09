@@ -8,7 +8,7 @@ public class WaypointProgressTracker : MonoBehaviour {
 	// This script manages the amount to look ahead along the route,
 	// and keeps track of progress and laps.
 	
-	[SerializeField] WaypointCircuit circuit;         // A reference to the waypoint-based route we should follow
+	[SerializeField] public WaypointCircuit circuit;         // A reference to the waypoint-based route we should follow
 	
 	[SerializeField] float lookAheadForTargetOffset = 5;		// The offset ahead along the route that the we will aim for
 	[SerializeField] float lookAheadForTargetFactor = .1f;      // A multiplier adding distance ahead along the route to aim for, based on current speed
@@ -31,7 +31,7 @@ public class WaypointProgressTracker : MonoBehaviour {
 
 	public Transform target;
 
-	private float progressDistance;			// The progress round the route, used in smooth mode.
+	public float progressDistance;			// The progress round the route, used in smooth mode.
 	private int progressNum;				// the current waypoint number, used in point-to-point mode.
 	private Vector3 lastPosition;			// Used to calculate current speed (since we may not have a rigidbody component)
 	private float speed;					// current speed of this object (calculated from delta since last frame)

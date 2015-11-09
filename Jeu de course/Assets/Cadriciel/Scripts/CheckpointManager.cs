@@ -63,12 +63,56 @@ public class CheckpointManager : MonoBehaviour
 				carData.checkPoint = checkPointIndex;
 			}
 		}
-
-
 	}
 
 	bool IsPlayer(CarController car)
 	{
 		return car.GetComponent<CarUserControlMP>() != null;
 	}
+
+    /*
+    public GameObject GetCarInFirstPlace()
+    {
+        bool first = true;
+        CarController firstPlaceCar = new CarController();
+        PositionData firstPlacePosData = new PositionData();
+        firstPlacePosData.lap = 0;
+        firstPlacePosData.checkPoint = 0;
+
+        foreach(KeyValuePair<CarController, PositionData> item in _carPositions)
+        {
+            if(first)
+            {
+                firstPlaceCar = item.Key;
+                firstPlacePosData = item.Value;
+                first = false;
+                continue;
+            }
+
+            if(item.Value.lap > firstPlacePosData.lap)
+            {
+                firstPlaceCar = item.Key;
+                firstPlacePosData = item.Value;
+                continue;
+            }
+            else if(item.Value.lap < firstPlacePosData.lap)
+            {
+                continue;
+            }
+
+            if(item.Value.checkPoint > firstPlacePosData.checkPoint)
+            {
+                firstPlaceCar = item.Key;
+                firstPlacePosData = item.Value;
+                continue;
+            }
+            else if(item.Value.checkPoint < firstPlacePosData.checkPoint)
+            {
+                continue;
+            }
+        }
+
+        return firstPlaceCar.gameObject;
+    }
+    */
 }

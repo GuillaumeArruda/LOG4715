@@ -92,4 +92,22 @@ public class RaceManager : MonoBehaviour
 		}
 
 	}
+
+    public GameObject GetFirstPlaceCar()
+    {
+        GameObject cars = GameObject.Find("Cars");
+        GameObject firstPlaceCar = null;
+        float maxProgress = 0.0f;
+
+        foreach(WaypointProgressTracker progressTracker in cars.GetComponentsInChildren<WaypointProgressTracker>())
+        {
+            if(progressTracker.progressDistance > maxProgress)
+            {
+                maxProgress = progressTracker.progressDistance;
+                firstPlaceCar = progressTracker.gameObject;
+            }
+        }
+
+        return firstPlaceCar;
+    }
 }

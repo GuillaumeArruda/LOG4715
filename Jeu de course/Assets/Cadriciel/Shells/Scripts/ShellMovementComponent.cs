@@ -6,6 +6,7 @@ class ShellMovementComponent : MonoBehaviour
     [SerializeField] private float m_rotationSpeed = 90;
     [SerializeField] private int   m_maxNumberOfBounces = 1;
     private int m_currentNumberOfBounces = 0;
+    private int m_currentWaypoint = int.MaxValue;
     const int m_vehiclesLayer = 8;
     Vector3 m_rotationAxis = Vector3.zero;
 
@@ -31,11 +32,12 @@ class ShellMovementComponent : MonoBehaviour
             transform.position -= Vector3.forward * (groundCheckRaycast.distance - transform.collider.bounds.extents.x);
         }
 
-        // Give a slight turn to the shell if it has a target
-        if(Target != null)
+        // Give a slight turn to the shell if it has a target (Red shell)
+        if(Target != null && Color == ShellColors.Red)
         {
             Vector3 distanceToTarget = Vector3.Normalize(Target.transform.position - transform.position);
-            Vector3 projectileDirection = transform.forward;
+            Vector3 projectileDirection = Vector3.Normalize(transform.forward);
+            float rotationScaleFactor = 1.5f - Vector3.Dot(distanceToTarget, projectileDirection);
 
             // Apply rotation while vectors are not parallel
             if(Vector3.Dot(distanceToTarget, projectileDirection) < distanceToTarget.magnitude * projectileDirection.magnitude)
@@ -45,8 +47,53 @@ class ShellMovementComponent : MonoBehaviour
                     m_rotationAxis = Vector3.Normalize(Vector3.Cross(projectileDirection, distanceToTarget));
                 }
 
-                print("Turning to " + Target.name);
-                rigidbody.velocity = Quaternion.AngleAxis(m_rotationSpeed * Time.deltaTime, m_rotationAxis) * rigidbody.velocity;
+                //print("Turning to " + Target.name);
+                rigidbody.velocity = Quaternion.AngleAxis(rotationScaleFactor * m_rotationSpeed * Time.deltaTime, m_rotationAxis) * rigidbody.velocity;
+            }
+        }
+
+        // Follow a target if there's one selected and there's no rotation speed
+        if(Target != null && Color == ShellColors.Blue)
+        {
+            // Check the list of waypoint and target. If target is closer than nearest waypoint go for the 
+            // target else, keep following the waypoints
+            Transform[] waypoints = Target.GetComponent<WaypointProgressTracker>().circuit.Waypoints;
+
+            if(m_currentWaypoint == int.MaxValue)
+            {
+                float distanceToClosestWaypoint = float.MaxValue;
+                for(int i = 0; i < waypoints.Length; ++i)
+                {
+                    Vector3 distanceToWaypoint = waypoints[i].position - transform.position;
+                    float dot = Vector3.Dot(distanceToWaypoint, transform.forward);
+                    if(Vector3.Magnitude(distanceToWaypoint) < distanceToClosestWaypoint && dot > 0)
+                    {
+                        distanceToClosestWaypoint = Vector3.Magnitude(distanceToWaypoint);
+                        m_currentWaypoint = i;
+                    }
+                }
+            }
+
+            if(Vector3.Magnitude(waypoints[m_currentWaypoint].position - transform.position) < 3.0)
+            {
+                if(++m_currentWaypoint >= waypoints.Length)
+                {
+                    m_currentWaypoint = 0;
+                }
+            }
+
+            float distanceToTarget = Vector3.Magnitude(Target.transform.position - transform.position);
+            float distanceToCurrentWaypoint = Vector3.Magnitude(waypoints[m_currentWaypoint].position - transform.position);
+
+            if(distanceToTarget < 10.0)
+            {
+                // Go for the target
+                rigidbody.velocity = Vector3.Magnitude(rigidbody.velocity) * Vector3.Normalize(Target.transform.position - transform.position);
+            }
+            else
+            {
+                // Go for the waypoint
+                rigidbody.velocity = Vector3.Magnitude(rigidbody.velocity) * Vector3.Normalize(waypoints[m_currentWaypoint].position - transform.position);
             }
         }
     }
@@ -61,7 +108,13 @@ class ShellMovementComponent : MonoBehaviour
         }
 
         // Destroy projectile on collision with a vehicle
-        if((collision.gameObject.layer & m_vehiclesLayer) > 0)
+        if((collision.gameObject.layer & m_vehiclesLayer) > 0 && Color != ShellColors.Blue)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        if(Color == ShellColors.Blue && collision.gameObject == Target)
         {
             Destroy(gameObject);
             return;
@@ -77,7 +130,6 @@ class ShellMovementComponent : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-
             return;
         }
     }
@@ -89,6 +141,12 @@ class ShellMovementComponent : MonoBehaviour
     }
 
     public GameObject Target
+    {
+        get;
+        set;
+    }
+
+    public ShellColors Color
     {
         get;
         set;
