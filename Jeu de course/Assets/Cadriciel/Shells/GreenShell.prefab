@@ -88,6 +88,9 @@ MonoBehaviour:
   m_shellVelocity: 60
   m_rotationSpeed: 0
   m_maxNumberOfBounces: 2
+  m_maxTimeAlive: 10
+  destroyParticleSystem: {fileID: 19874920, guid: 3d871da91675cfa4fb69da8dc78ef6e3,
+    type: 2}
 --- !u!135 &13527114
 SphereCollider:
   m_ObjectHideFlags: 1

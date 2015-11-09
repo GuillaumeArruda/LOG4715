@@ -98,7 +98,11 @@ class CarProjectileLauncher : MonoBehaviour
             case ShellColors.Blue:
                 // Acquire target which is the car in first position
                 GameObject gameManager = GameObject.Find("Game Manager");
-                shellMoveComp.Target = gameManager.GetComponent<RaceManager>().GetFirstPlaceCar();
+                GameObject shellTarget = gameManager.GetComponent<RaceManager>().GetFirstPlaceCar();
+                if(shellTarget != gameObject)
+                {
+                    shellMoveComp.Target = shellTarget;
+                }
                 break;
         }
     }

@@ -89,6 +89,8 @@ MonoBehaviour:
   m_rotationSpeed: 0
   m_maxNumberOfBounces: 10000
   m_maxTimeAlive: 10
+  destroyParticleSystem: {fileID: 19862976, guid: 5350422e6ce58b54b83621f6f12bf224,
+    type: 2}
 --- !u!135 &13516126
 SphereCollider:
   m_ObjectHideFlags: 1
