@@ -5,8 +5,10 @@ class ShellMovementComponent : MonoBehaviour
     [SerializeField] private float m_shellVelocity = 60;
     [SerializeField] private float m_rotationSpeed = 90;
     [SerializeField] private int   m_maxNumberOfBounces = 1;
+    [SerializeField] private float m_maxTimeAlive = 10.0f;
     private int m_currentNumberOfBounces = 0;
     private int m_currentWaypoint = int.MaxValue;
+    private float m_timeAlive = 0;
     const int m_vehiclesLayer = 8;
     Vector3 m_rotationAxis = Vector3.zero;
 
@@ -14,6 +16,13 @@ class ShellMovementComponent : MonoBehaviour
     {
         RaycastHit groundCheckRaycast;
         int layerMask = 1 << 11;
+
+        m_timeAlive += Time.deltaTime;
+        if(m_timeAlive > m_maxTimeAlive)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         // Raycast below the projectile to follow the ground
         if(Physics.Raycast(transform.position, -Vector3.up, out groundCheckRaycast, Mathf.Infinity, layerMask))
@@ -85,7 +94,7 @@ class ShellMovementComponent : MonoBehaviour
             float distanceToTarget = Vector3.Magnitude(Target.transform.position - transform.position);
             float distanceToCurrentWaypoint = Vector3.Magnitude(waypoints[m_currentWaypoint].position - transform.position);
 
-            if(distanceToTarget < 10.0)
+            if(distanceToTarget < 20.0)
             {
                 // Go for the target
                 rigidbody.velocity = Vector3.Magnitude(rigidbody.velocity) * Vector3.Normalize(Target.transform.position - transform.position);
