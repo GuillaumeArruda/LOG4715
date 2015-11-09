@@ -9,8 +9,11 @@ public class CarAccelerator : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
-        Rigidbody car = collision.gameObject.GetComponent<Rigidbody>();
-        StartCoroutine("AcceleratorCoroutine", car);
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Vehicles"))
+        {
+            Rigidbody car = collision.gameObject.GetComponent<Rigidbody>();
+            StartCoroutine("AcceleratorCoroutine", car);
+        }
     }
 
     IEnumerator AcceleratorCoroutine(Rigidbody car)
