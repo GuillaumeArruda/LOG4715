@@ -56,7 +56,6 @@ class ShellMovementComponent : MonoBehaviour
                     m_rotationAxis = Vector3.Normalize(Vector3.Cross(projectileDirection, distanceToTarget));
                 }
 
-                //print("Turning to " + Target.name);
                 rigidbody.velocity = Quaternion.AngleAxis(rotationScaleFactor * m_rotationSpeed * Time.deltaTime, m_rotationAxis) * rigidbody.velocity;
             }
         }
