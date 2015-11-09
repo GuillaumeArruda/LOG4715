@@ -22,7 +22,7 @@ public class SpeedMeterScript : MonoBehaviour {
 	public void UpdateSpeed(float currSpeed, float maxSpeed) {
 		// Calculate the speed percentage to show on the GUI
 		// 100% speed = 1 = 180 degree spin
-		speedDegSpin = (currSpeed  / maxSpeed) * 180;
+		speedDegSpin = (Mathf.Abs(currSpeed)  / maxSpeed) * 180;
 
 		//Clip the speed needle rotation
 		if (speedDegSpin < 0)

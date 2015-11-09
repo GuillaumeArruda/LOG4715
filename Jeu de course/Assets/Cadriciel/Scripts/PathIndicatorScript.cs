@@ -24,11 +24,16 @@ public class PathIndicatorScript : MonoBehaviour {
 	
 	public void UpdateWaypoint(Vector3 target) {
 		// Get the next waypoint target to show on the GUI
+		// Ignore the Y coord to ignore height differences between 
 		Vector3 direction = target - car.position;
+		direction.y = 0;
 
-		pathAngle = Vector3.Angle (direction, car.forward);
+		Vector3 carForward = car.forward;
+		carForward.y = 0;
 
-		if (Vector3.Cross (direction, car.forward).y > 0) {
+		pathAngle = Vector3.Angle (direction, carForward);
+
+		if (Vector3.Cross (direction, carForward).y > 0) {
 			pathAngle = -pathAngle;
 		}
 	}
