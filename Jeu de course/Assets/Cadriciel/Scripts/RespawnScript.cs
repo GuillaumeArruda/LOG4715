@@ -20,12 +20,23 @@ public class RespawnScript : MonoBehaviour {
 	}
 	
 	// Possible ways to require a respawn would be:
+	// Car is broken
 	// Car is under the map
 	// Car is upside down and can no longer move
 	// Car is too far away from the target waypoint
 	void FixedUpdate() {
+
+		// Check if the car is destroyed
+		DamageScript damage = GetComponent<DamageScript> ();
+		if (damage.getCurrentHealth () <= 0.0f) {
+			damage.ResetHealth();
+			Debug.Log("Respawn: Damage");
+			Respawn();
+		}
+
 		// Check if the car is under the map
 		if (car.position.y < -50.0f) {
+			Debug.Log("Respawn: Under the map");
 			Respawn();
 		}
 
@@ -34,6 +45,7 @@ public class RespawnScript : MonoBehaviour {
 			timeFlipped += Time.fixedDeltaTime;
 
 			if (timeFlipped > timeFlippedBeforeRespawn) {
+				Debug.Log("Respawn: Car upside down");
 				Respawn();
 			}
 		} else {
@@ -47,6 +59,7 @@ public class RespawnScript : MonoBehaviour {
 			direction.y = 0;
 		
 			if (direction.magnitude > distanceToWaypointBeforeRespawn) {
+				Debug.Log("Respawn: Too far");
 				Respawn ();
 			}
 		}
@@ -58,8 +71,14 @@ public class RespawnScript : MonoBehaviour {
 
 	void Respawn()
 	{
+		DamageScript damage = GetComponent<DamageScript> ();
+		damage.UpdateDamageFactor ();
+
 		car.transform.position = (target.position + new Vector3(0, 1, 0));
 
 		car.transform.rotation = target.rotation;
+
+		Rigidbody carBody = GetComponent<Rigidbody> ();
+		carBody.velocity = Vector3.zero;
 	}
 }

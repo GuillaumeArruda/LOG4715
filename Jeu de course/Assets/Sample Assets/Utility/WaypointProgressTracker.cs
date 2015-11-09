@@ -90,11 +90,6 @@ public class WaypointProgressTracker : MonoBehaviour {
 				progressDistance += progressDelta.magnitude * 0.5f;
 			}
 
-            if(gameObject.name == "Joueur 1")
-            {
-                print(progressDistance);
-            }
-
 			lastPosition = transform.position;
 		} else {
 			// point to point mode. Just increase the waypoint if we're close enough:

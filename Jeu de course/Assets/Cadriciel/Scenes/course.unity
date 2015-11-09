@@ -8657,6 +8657,7 @@ GameObject:
   - 114: {fileID: 481286563}
   - 114: {fileID: 481286564}
   - 114: {fileID: 481286565}
+  - 114: {fileID: 481286566}
   m_Layer: 8
   m_Name: Joueur 1
   m_TagString: Player
@@ -8921,7 +8922,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42564b4d7f5be547822a659ddc08454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMeterEmpty: {fileID: 2800000, guid: efaaea7f6a25a4d4fafa9fce85bf947f, type: 3}
+  speedMeterGoodHealth: {fileID: 2800000, guid: a007f62b178e0c34398590977f6e5108,
+    type: 3}
+  speedMeterMediumHealth: {fileID: 2800000, guid: 254e18d6251f56f4291d29b12d1bf31c,
+    type: 3}
+  speedMeterLowHealth: {fileID: 2800000, guid: 3b7225bf50cdea24a820037d2d6ef1ab, type: 3}
   speedMeterBar: {fileID: 2800000, guid: fc3962f907c337a48b15e244bf594735, type: 3}
 --- !u!114 &481286564
 MonoBehaviour:
@@ -8949,6 +8954,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceToWaypointBeforeRespawn: 100
   timeFlippedBeforeRespawn: 5
+--- !u!114 &481286566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481286549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9185bc1cc1691fd49939d9a30f2ec211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplier: 1
+  damageFromVehicleCollision: 5
+  damageFromGreenShellCollision: 5
+  damageFromRedShellCollision: 5
+  damageFromBlueShellCollision: 5
+  mediumHealthRatio: .75
+  mediumHealthFactor: .800000012
+  lowHealthRatio: .400000006
+  lowHealthFactor: .600000024
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
@@ -38047,7 +38072,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42564b4d7f5be547822a659ddc08454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMeterEmpty: {fileID: 2800000, guid: efaaea7f6a25a4d4fafa9fce85bf947f, type: 3}
+  speedMeterGoodHealth: {fileID: 0}
+  speedMeterMediumHealth: {fileID: 0}
+  speedMeterLowHealth: {fileID: 0}
   speedMeterBar: {fileID: 0}
 --- !u!1 &1988451985
 GameObject:
