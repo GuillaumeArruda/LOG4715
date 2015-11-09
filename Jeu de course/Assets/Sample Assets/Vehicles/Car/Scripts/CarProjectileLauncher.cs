@@ -9,9 +9,41 @@ class CarProjectileLauncher : MonoBehaviour
     public Rigidbody redShell;
     public Rigidbody greenShell;
 
-	public int BlueShellAmmo;
-	public int RedShellAmmo;
-	public int GreenShellAmmo;
+	private int blueShellAmmo;
+	private int redShellAmmo;
+	private int greenShellAmmo;
+
+    public int BlueShellAmmo
+    {
+        get { return blueShellAmmo; }
+        set
+        {
+            blueShellAmmo = value;
+            UpdateAmmo();
+        }
+    }
+
+    public int RedShellAmmo
+    {
+        get { return redShellAmmo; }
+        set
+        {
+            redShellAmmo = value;
+            Debug.Log(redShellAmmo);
+            UpdateAmmo();
+        }
+    }
+
+    public int GreenShellAmmo
+    {
+        get { return greenShellAmmo; }
+        set
+        {
+            greenShellAmmo = value;
+            Debug.Log(greenShellAmmo);
+            UpdateAmmo();
+        }
+    }
 
 	public GUIText BlueShellAmmoText;
 	public GUIText RedShellAmmoText;
@@ -129,14 +161,10 @@ class CarProjectileLauncher : MonoBehaviour
         }
     }
 
-	void FixedUpdate() {
-		UpdateAmmo ();
-	}
-
 	private void UpdateAmmo() {
-		BlueShellAmmoText.text 	= ((int)BlueShellAmmo).ToString ("D2") + "x";
-		RedShellAmmoText.text 	= ((int)RedShellAmmo).ToString ("D2") + "x";
-		GreenShellAmmoText.text = ((int)GreenShellAmmo).ToString ("D2") + "x";
+		BlueShellAmmoText.text 	= BlueShellAmmo.ToString ("D2") + "x";
+		RedShellAmmoText.text 	= RedShellAmmo.ToString ("D2") + "x";
+		GreenShellAmmoText.text = GreenShellAmmo.ToString ("D2") + "x";
 	}
 
 	public void OnGUI()

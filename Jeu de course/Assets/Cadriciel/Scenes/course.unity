@@ -8905,9 +8905,6 @@ MonoBehaviour:
   blueShell: {fileID: 5434202, guid: 6211ec7b8f736b24a8fb4e36a4b6476c, type: 2}
   redShell: {fileID: 5475346, guid: 542fbefb4b554e64b948987494c8c826, type: 2}
   greenShell: {fileID: 5433984, guid: 870e856413d91e345861d6960208e409, type: 2}
-  BlueShellAmmo: 0
-  RedShellAmmo: 0
-  GreenShellAmmo: 0
   BlueShellAmmoText: {fileID: 22039028}
   RedShellAmmoText: {fileID: 1806671567}
   GreenShellAmmoText: {fileID: 1426091178}
@@ -19136,7 +19133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -28120,7 +28117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -32214,7 +32211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 4637037}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -36008,7 +36005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 4637037}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -40497,7 +40494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -41540,7 +41537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
