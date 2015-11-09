@@ -6,21 +6,36 @@ class ShellMovementComponent : MonoBehaviour
     [SerializeField] private float m_rotationSpeed = 90;
     [SerializeField] private int   m_maxNumberOfBounces = 1;
     [SerializeField] private float m_maxTimeAlive = 10.0f;
+    public ParticleSystem destroyParticleSystem;
     private int m_currentNumberOfBounces = 0;
     private int m_currentWaypoint = int.MaxValue;
     private float m_timeAlive = 0;
+    private bool m_delayedDestroy = false;
+    private float m_timeSpentInDestroy = 0.0f;
+    private float m_destroyTimer = 2.0f;
     const int m_vehiclesLayer = 8;
     Vector3 m_rotationAxis = Vector3.zero;
 
     void Update()
     {
+        if(m_delayedDestroy && m_timeSpentInDestroy < m_destroyTimer)
+        {
+            print("Waiting");
+            m_timeSpentInDestroy += Time.deltaTime;
+        }
+        else if(m_delayedDestroy && m_timeSpentInDestroy >= m_destroyTimer)
+        {
+            print("Destroyed");
+            Destroy(gameObject);
+        }
+
         RaycastHit groundCheckRaycast;
         int layerMask = LayerMask.GetMask("Track");
 
         m_timeAlive += Time.deltaTime;
         if(m_timeAlive > m_maxTimeAlive)
         {
-            Destroy(gameObject);
+            DelayedDestroy();
             return;
         }
 
@@ -118,13 +133,13 @@ class ShellMovementComponent : MonoBehaviour
         // Destroy projectile on collision with a vehicle
         if((collision.gameObject.layer & m_vehiclesLayer) > 0 && Color != ShellColors.Blue)
         {
-            Destroy(gameObject);
+            DelayedDestroy();
             return;
         }
 
         if(Color == ShellColors.Blue && collision.gameObject == Target)
         {
-            Destroy(gameObject);
+            DelayedDestroy();
             return;
         }
 
@@ -137,7 +152,7 @@ class ShellMovementComponent : MonoBehaviour
 
             if(++m_currentNumberOfBounces > m_maxNumberOfBounces)
             {
-                Destroy(gameObject);
+                DelayedDestroy();
             }
             return;
         }
@@ -159,5 +174,21 @@ class ShellMovementComponent : MonoBehaviour
     {
         get;
         set;
+    }
+
+    void DelayedDestroy()
+    {
+        if(m_delayedDestroy)
+        {
+            return;
+        }
+
+        m_delayedDestroy = true;
+        renderer.enabled = false;
+        rigidbody.active = false;
+        collider.enabled = false;
+
+        ParticleSystem explosion  = Instantiate(destroyParticleSystem, transform.position, transform.rotation) as ParticleSystem;
+        explosion.enableEmission = true;
     }
 }
