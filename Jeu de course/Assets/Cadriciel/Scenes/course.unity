@@ -647,6 +647,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1946671951}
   m_RootOrder: 1
+--- !u!1 &22039026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 22039027}
+  - 132: {fileID: 22039028}
+  m_Layer: 0
+  m_Name: AmmoBlueShell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &22039027
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22039026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .949999988, y: .200000003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1305879589}
+  m_RootOrder: 7
+--- !u!132 &22039028
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22039026}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Test
+  m_Anchor: 5
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 30
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294902272
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &23858095
 GameObject:
   m_ObjectHideFlags: 0
@@ -8816,6 +8867,9 @@ MonoBehaviour:
   blueShell: {fileID: 5434202, guid: 6211ec7b8f736b24a8fb4e36a4b6476c, type: 2}
   redShell: {fileID: 5475346, guid: 542fbefb4b554e64b948987494c8c826, type: 2}
   greenShell: {fileID: 5433984, guid: 870e856413d91e345861d6960208e409, type: 2}
+  BlueShellAmmo: 0
+  RedShellAmmo: 0
+  GreenShellAmmo: 0
   frontOfVehiculeFireOffset: 5
   maxTargetDistance: 30
   maxTargetAcquisitonAngle: 45
@@ -8836,7 +8890,7 @@ MonoBehaviour:
   expenditureRate: 20
   nitroMaxCapacity: 100
   nitroEmptyBar: {fileID: 2800000, guid: 3cae02495b88d2d4fbf19382b7993691, type: 3}
-  nitroFullBar: {fileID: 2800000, guid: fc3962f907c337a48b15e244bf594735, type: 3}
+  nitroFullBar: {fileID: 2800000, guid: 8e73424fe72829843b4bc494b0e656dc, type: 3}
 --- !u!114 &481286560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8902,12 +8956,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42564b4d7f5be547822a659ddc08454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMeterGoodHealth: {fileID: 2800000, guid: a007f62b178e0c34398590977f6e5108,
-    type: 3}
-  speedMeterMediumHealth: {fileID: 2800000, guid: 254e18d6251f56f4291d29b12d1bf31c,
-    type: 3}
-  speedMeterLowHealth: {fileID: 2800000, guid: 3b7225bf50cdea24a820037d2d6ef1ab, type: 3}
-  speedMeterBar: {fileID: 2800000, guid: fc3962f907c337a48b15e244bf594735, type: 3}
+  speedMeterEmpty: {fileID: 2800000, guid: 3116f85b064cd5f4c9c4ab15f357cce9, type: 3}
+  speedMeterBar: {fileID: 2800000, guid: 3b7225bf50cdea24a820037d2d6ef1ab, type: 3}
 --- !u!114 &481286564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8919,8 +8969,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5301629886013c4da8a304326a9dbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathBox: {fileID: 2800000, guid: 1374bcbabc5a79c4191c4c8616b1e307, type: 3}
-  pathArrow: {fileID: 2800000, guid: fc3962f907c337a48b15e244bf594735, type: 3}
+  pathBox: {fileID: 2800000, guid: 5656b492b04443741878cd954bfc93fa, type: 3}
+  pathArrow: {fileID: 2800000, guid: a007f62b178e0c34398590977f6e5108, type: 3}
 --- !u!114 &481286565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9521,7 +9571,7 @@ Prefab:
     - target: {fileID: 11441516, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: nitroFullBar
       value: 
-      objectReference: {fileID: 2800000, guid: fc3962f907c337a48b15e244bf594735, type: 3}
+      objectReference: {fileID: 2800000, guid: 8e73424fe72829843b4bc494b0e656dc, type: 3}
     - target: {fileID: 11491710, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
       propertyPath: scoreText
       value: 
@@ -26543,6 +26593,9 @@ Transform:
   - {fileID: 438218562}
   - {fileID: 1633210964}
   - {fileID: 1845678296}
+  - {fileID: 1426091177}
+  - {fileID: 1806671566}
+  - {fileID: 22039027}
   m_Father: {fileID: 0}
   m_RootOrder: 4
 --- !u!1 &1316483489
@@ -27960,6 +28013,57 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1255116528}
   m_GameObject: {fileID: 1414471858}
   m_Mesh: {fileID: 4300000, guid: b9d7ac1a0f551404f8d32e1e02b64325, type: 3}
+--- !u!1 &1426091176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1426091177}
+  - 132: {fileID: 1426091178}
+  m_Layer: 0
+  m_Name: AmmoGreenShell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1426091177
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1426091176}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .949999988, y: .5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1305879589}
+  m_RootOrder: 5
+--- !u!132 &1426091178
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1426091176}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Test
+  m_Anchor: 5
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 30
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278255360
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1426961455
 GameObject:
   m_ObjectHideFlags: 0
@@ -33915,6 +34019,57 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.99999881, y: 8, z: 1.99999976}
   m_Center: {x: 6.2584877e-07, y: 4, z: 1.49011612e-07}
+--- !u!1 &1806671565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1806671566}
+  - 132: {fileID: 1806671567}
+  m_Layer: 0
+  m_Name: AmmoRedShell
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1806671566
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1806671565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .949999988, y: .349999994, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1305879589}
+  m_RootOrder: 6
+--- !u!132 &1806671567
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1806671565}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Test
+  m_Anchor: 5
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 30
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1806963580
 GameObject:
   m_ObjectHideFlags: 0
@@ -38211,9 +38366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42564b4d7f5be547822a659ddc08454, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMeterGoodHealth: {fileID: 0}
-  speedMeterMediumHealth: {fileID: 0}
-  speedMeterLowHealth: {fileID: 0}
+  speedMeterEmpty: {fileID: 0}
   speedMeterBar: {fileID: 0}
 --- !u!1 &1988451985
 GameObject:

@@ -9,11 +9,7 @@ public class SpeedMeterScript : MonoBehaviour {
 	private Vector2 pivotPoint;
 
 	[SerializeField]
-	private Texture speedMeterGoodHealth;
-	[SerializeField]
-	private Texture speedMeterMediumHealth;
-	[SerializeField]
-	private Texture speedMeterLowHealth;
+	private Texture speedMeterEmpty;
 	[SerializeField]
 	private Texture speedMeterBar;
 	
@@ -37,21 +33,7 @@ public class SpeedMeterScript : MonoBehaviour {
 
 	public void OnGUI()
 	{
-		// Base Meter
-		DamageScript damage = GetComponent<DamageScript> ();
-		switch (damage.getHealthStatus ()) {
-		case DamageScript.DamageStatus.GoodHealth:
-			GUI.DrawTexture(new Rect(0, (Screen.height - speedMeterHeight), speedMeterWidth, speedMeterHeight), speedMeterGoodHealth);
-			break;
-		case DamageScript.DamageStatus.MediumHealth:
-			GUI.DrawTexture(new Rect(0, (Screen.height - speedMeterHeight), speedMeterWidth, speedMeterHeight), speedMeterMediumHealth);
-			break;
-		case DamageScript.DamageStatus.LowHealth:
-			GUI.DrawTexture(new Rect(0, (Screen.height - speedMeterHeight), speedMeterWidth, speedMeterHeight), speedMeterLowHealth);
-			break;
-		default:
-			break;
-		}
+		GUI.DrawTexture(new Rect(0, (Screen.height - speedMeterHeight), speedMeterWidth, speedMeterHeight), speedMeterEmpty);
 
 		// Speed Needle
 		pivotPoint = new Vector2 (speedMeterWidth / 2, (Screen.height - speedMeterHeight/20));

@@ -9,6 +9,18 @@ class CarProjectileLauncher : MonoBehaviour
     public Rigidbody redShell;
     public Rigidbody greenShell;
 
+	public int BlueShellAmmo;
+	public int RedShellAmmo;
+	public int GreenShellAmmo;
+
+	public GUIText BlueShellAmmoText;
+	public GUIText RedShellAmmoText;
+	public GUIText GreenShellAmmoText;
+	
+	[SerializeField] private Texture BlueShellIcon;
+	[SerializeField] private Texture RedShellIcon;
+	[SerializeField] private Texture GreenShellIcon;
+
     [SerializeField] private float frontOfVehiculeFireOffset = 10;
     [SerializeField] private float maxTargetDistance = 10;
     [SerializeField] private float maxTargetAcquisitonAngle = 45;
@@ -19,16 +31,26 @@ class CarProjectileLauncher : MonoBehaviour
         {
             switch(color)
             {
-                case ShellColors.Green:
+            case ShellColors.Green:
+				if (GreenShellAmmo > 0) {
+					GreenShellAmmo--;
                     FireShell(greenShell, ShellColors.Green);
-                    break;
-                case ShellColors.Red:
+				}
+                break;
+			case ShellColors.Red:
+				if (RedShellAmmo > 0) {
+					RedShellAmmo--;
                     FireShell(redShell, ShellColors.Red);
-                    break;
-                case ShellColors.Blue:
+				}
+                break;
+			case ShellColors.Blue:
+				if (BlueShellAmmo > 0) {
+					BlueShellAmmo--;
                     FireShell(blueShell, ShellColors.Blue);
-                    break;
+				}
+                break;
             }
+			UpdateAmmo();
         }
     }
 
@@ -102,4 +124,17 @@ class CarProjectileLauncher : MonoBehaviour
                 break;
         }
     }
+
+	private void UpdateAmmo() {
+		BlueShellAmmoText.text 	= ((int)BlueShellAmmo).ToString ("D2") + "x";
+		RedShellAmmoText.text 	= ((int)RedShellAmmo).ToString ("D2") + "x";
+		GreenShellAmmoText.text = ((int)GreenShellAmmo).ToString ("D2") + "x";
+	}
+
+	public void OnGUI()
+	{
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2), 25, 25), BlueShellIcon);
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2)- 30, 25, 25), RedShellIcon);
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2)- 60, 25, 25), GreenShellIcon);
+	}
 }

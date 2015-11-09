@@ -27,7 +27,7 @@ public class NitroScript : MonoBehaviour {
 	void Start () {
         car = GetComponent<Rigidbody>();
         nitroBarWidth = Screen.width / 5;
-        nitroBarHeight = Screen.height / 18;
+        nitroBarHeight = Screen.height / 10;
 	}
 
     void FixedUpdate() {

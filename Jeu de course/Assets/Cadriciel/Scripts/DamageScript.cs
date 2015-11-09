@@ -117,6 +117,7 @@ public class DamageScript : MonoBehaviour {
 	public void ResetHealth()
 	{
 		currentHealth = maxHealth;
+		UpdateDamageFactor ();
 	}
 
 	public DamageStatus getHealthStatus()
