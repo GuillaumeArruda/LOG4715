@@ -9759,7 +9759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 420405169}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 1
+  lookAheadForIndicatorTargetOffset: 2
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .100000001
@@ -20248,7 +20248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -29285,7 +29285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -33806,7 +33806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 4637037}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -37750,7 +37750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 4637037}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -42239,7 +42239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -43282,7 +43282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
