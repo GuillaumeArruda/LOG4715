@@ -54,10 +54,10 @@ public class JumpScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         RaycastHit groundCheckRaycast;
-        int layerMask = 1 << 11;
+        int layerMask = LayerMask.GetMask("Track");
         Physics.Raycast(transform.position, -Vector3.up, out groundCheckRaycast, Mathf.Infinity, layerMask);
         isFalling = groundCheckRaycast.distance > 0.10;
-        isInTheAir = groundCheckRaycast.distance > 0.70;
+        isInTheAir = groundCheckRaycast.distance > 0.50;
 	    if(JumpButtonDown && !isJumping && !isFalling) {
             StartCoroutine("JumpCoroutine");
             isJumping = true;
@@ -85,7 +85,6 @@ public class JumpScript : MonoBehaviour {
             Vector3 jumpVector = Vector3.Lerp(new Vector3(0, jumpForceInTheAir, 0), Vector3.zero, proportionCompleted);
             GetComponent<Rigidbody>().AddForce(jumpVector);
             timer += Time.fixedDeltaTime;
-            Debug.Log(timer);
             yield return new WaitForFixedUpdate();
         }
         isJumping = false;

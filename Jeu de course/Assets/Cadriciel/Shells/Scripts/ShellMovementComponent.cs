@@ -30,7 +30,7 @@ class ShellMovementComponent : MonoBehaviour
         }
 
         RaycastHit groundCheckRaycast;
-        int layerMask = 1 << 11;
+        int layerMask = LayerMask.GetMask("Track");
 
         m_timeAlive += Time.deltaTime;
         if(m_timeAlive > m_maxTimeAlive)

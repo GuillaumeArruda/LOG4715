@@ -19,7 +19,7 @@ public class CarAccelerator : MonoBehaviour {
     IEnumerator AcceleratorCoroutine(Rigidbody car)
     {
         double time = 0.0;
-        int layerMask = 1 << 11;
+        int layerMask = LayerMask.GetMask("Track");
         
         while(time < AccelerationDuration)
         {
