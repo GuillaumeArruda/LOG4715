@@ -40,7 +40,7 @@ public class CarUserControlMP : MonoBehaviour
 		float h = Input.GetAxis(horizontal);
 		float v = Input.GetAxis(vertical);
 #endif
-        jumpScript.AirControl(h, v, r);
+        jumpScript.AirControl(h, v, r, Time.fixedDeltaTime);
 		car.Move(h,v);
 	}
 

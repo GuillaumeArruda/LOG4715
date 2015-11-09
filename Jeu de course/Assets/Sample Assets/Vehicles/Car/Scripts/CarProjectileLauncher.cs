@@ -99,7 +99,6 @@ class CarProjectileLauncher : MonoBehaviour
                 // Acquire target which is the car in first position
                 GameObject gameManager = GameObject.Find("Game Manager");
                 shellMoveComp.Target = gameManager.GetComponent<RaceManager>().GetFirstPlaceCar();
-                print(shellMoveComp.Target.name);
                 break;
         }
     }

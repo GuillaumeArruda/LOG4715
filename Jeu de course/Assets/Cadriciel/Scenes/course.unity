@@ -8806,8 +8806,9 @@ MonoBehaviour:
   airControlFowardAxis: 120
   airControlRightAxis: 120
   airControlUpAxis: 120
-  minJumpHeightForScore: 2
+  minJumpHeightForScore: 5
   scorePerSecondsForHighJump: 100
+  scorePerSecondsForAirControl: 100
   scoreText: {fileID: 1633210963}
 --- !u!114 &481286561
 MonoBehaviour:
@@ -9413,6 +9414,14 @@ Prefab:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1633210963}
+    - target: {fileID: 11491710, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: minJumpHeightForScore
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491710, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: scorePerSecondsForAirControl
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -37648,6 +37657,7 @@ MonoBehaviour:
   airControlUpAxis: 120
   minJumpHeightForScore: 2
   scorePerSecondsForHighJump: 100
+  scorePerSecondsForAirControl: 100
   scoreText: {fileID: 0}
 --- !u!114 &1977983694
 MonoBehaviour:

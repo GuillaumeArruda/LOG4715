@@ -16,8 +16,9 @@ public class JumpScript : MonoBehaviour {
     [SerializeField]
     float airControlUpAxis = 120.0f;
 
-    [SerializeField] float minJumpHeightForScore = 2.0f;
+    [SerializeField] float minJumpHeightForScore = 5.0f;
     [SerializeField] float scorePerSecondsForHighJump = 100f;
+    [SerializeField] float scorePerSecondsForAirControl = 100f;
 
     private Transform car;
 
@@ -36,12 +37,17 @@ public class JumpScript : MonoBehaviour {
         Score = 0;
 	}
 	
-    public void AirControl(float h, float v, float r){
+    public void AirControl(float h, float v, float r, float time){
         if (isInTheAir)
         {
             car.Rotate(Vector3.right, v * airControlRightAxis * Time.fixedDeltaTime);
             car.Rotate(Vector3.up, h * airControlUpAxis * Time.fixedDeltaTime);
             car.Rotate(Vector3.forward, r * airControlFowardAxis * Time.fixedDeltaTime);
+
+            if((r != 0.0f) || (h != 0.0f) || (v != 0.0f))
+            {
+                Score += time * scorePerSecondsForAirControl;
+            }
         }
     }
 
@@ -62,7 +68,6 @@ public class JumpScript : MonoBehaviour {
             // Make it so if we jump high enough we get more score
             RaycastHit jumpHeightRaycast;
             Physics.Raycast(transform.position, -Vector3.up, out jumpHeightRaycast, Mathf.Infinity, layerMask);
-            print(jumpHeightRaycast.distance);
             if(jumpHeightRaycast.distance > minJumpHeightForScore)
             {
                 Score += scorePerSecondsForHighJump * Time.deltaTime; 
