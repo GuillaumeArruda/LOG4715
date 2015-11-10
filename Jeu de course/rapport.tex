@@ -136,6 +136,7 @@ La mécanique d'object destructible est implémentée dans le fichier Destructib
 \subsection{Dommages au véhicule}
 La mécanique de dommage au véhicule est implémentée dans le fichier DamageScript.cs.Elle permet au véhicule de recevoir du dommage lorsqu'il collisionne avec un projectile ou un autre vehicule. Lorsque le véhicule est partiellement endommagé, sa vitesse maximale est légèrement réduite. S'il est très endommagé, la vitesse maximale est encore plus impactée. Si le vehicule est détruit, il est replacé sur la piste avec sa vie maximale.
 \subsection{Replacement}
+La mécanique du replacement du véhicule est implémentée dans le fichier RespawnScript.cs. Le système de replacement de véhicule permet au joueur d'être repositionné sur la piste si certaines conditions sont atteintes. Par exemple, s'il est tombé en dessous de la piste, s'il est trop éloigné de l'endroit ou il est sensé aller où si son véhicule est détruit.
 \subsection{Bonus accélérateurs}
 La mécanique de bonus accélérateurs est implémentée dans le fichier CarAccelerator.cs. Les accélérateurs accélèrent les véhicules qui les touches dans la direction où les véhicules font face.
 \subsection{Objets collectionnables}
@@ -147,7 +148,9 @@ La mécanique de saut simple est implémenté dans le fichier JumpScript.cs. Ell
 \subsection{Orientation aérienne}
 La mécanique d'orientation aérienne est implémenté dans le fichier JumpScript.cs. Elle utilise les touches W,S pour le contrôle le long de l'axe des z, les touches A,D pour le contrôle le long de l'axe des y et Q,E pour le contrôle le long de l'axe des x. Elle permet au joueur de facilement contrôler le véhicule dans les airs pour favoriser l'utilisation de la Nitro.
 \subsection{Indications}
+La mécanique d'indication de la direction est implémentée dans le fichier PathIndicatorScript.cs. L'indicateur permet au joueur de voir dans quelle direction la piste se dirige afin de savoir dans quel sens aller.
 \subsection{Jauge de vitesse}
+La mécanique de jauge de vitesse est implémentée dans le fichier SpeedMeterScript.cs. Elle permet de montrer au joueur à quelle vitesse il se déplace. Cela est particulièrement utile lors de virages sérrés où il y a des chances de tonneaux si l'on ne fait pas attention à l'angle de virage et de la vitesse en jeu.
 
 \vspace{10pt}
 %----------------------------------------------------------------------------------------
