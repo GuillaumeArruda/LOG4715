@@ -2354,11 +2354,11 @@ Transform:
   m_PrefabInternal: {fileID: 1486635375}
   m_GameObject: {fileID: 116829691}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -180.649994, y: 2.13000011, z: -93.5800018}
+  m_LocalPosition: {x: -180.649994, y: 5.80000019, z: -93.5800018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
 --- !u!1001 &124667254
 Prefab:
   m_ObjectHideFlags: 0
@@ -5690,11 +5690,11 @@ Transform:
   m_PrefabInternal: {fileID: 1586045272}
   m_GameObject: {fileID: 278003906}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -177.449997, y: 2.1099999, z: -101.669998}
+  m_LocalPosition: {x: -177.449997, y: 4.48000002, z: -101.669998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1001 &286293165
 Prefab:
   m_ObjectHideFlags: 0
@@ -8763,7 +8763,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1 &428350802
 GameObject:
   m_ObjectHideFlags: 0
@@ -10420,6 +10420,10 @@ Prefab:
       propertyPath: scorePerSecondsForAirControl
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 11491710, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
+      propertyPath: audio
+      value: 
+      objectReference: {fileID: 8300000, guid: ed279d1b6161c87498fa9480c3778d47, type: 3}
     m_RemovedComponents:
     - {fileID: 11400026, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0e7ee4df08df88c4880f43398f9ad2c2, type: 2}
@@ -11301,7 +11305,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
 --- !u!1 &591039614
 GameObject:
   m_ObjectHideFlags: 0
@@ -20248,7 +20252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -22155,7 +22159,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
   m_PrefabInternal: {fileID: 1260655689}
   m_GameObject: {fileID: 1104837422}
-  m_LocalRotation: {x: -.00719530834, y: -.943485141, z: -.0205281526, w: .330700368}
+  m_LocalRotation: {x: .0108675631, y: -.943198979, z: .0310050696, w: .330600053}
   m_LocalPosition: {x: 300.640015, y: 195.460007, z: 360.040009}
   m_LocalScale: {x: 1, y: .18582201, z: .360890031}
   m_Children:
@@ -23584,7 +23588,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1001 &1165087733
 Prefab:
   m_ObjectHideFlags: 0
@@ -27560,19 +27564,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_LocalRotation.x
-      value: -.00719530834
+      value: .0108675631
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -.943485141
+      value: -.943198979
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_LocalRotation.z
-      value: -.0205281526
+      value: .0310050696
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_LocalRotation.w
-      value: .330700368
+      value: .330600053
       objectReference: {fileID: 0}
     - target: {fileID: 400080, guid: b07bb780c3af7684b89ec6177121bb7f, type: 2}
       propertyPath: m_RootOrder
@@ -29285,7 +29289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -30686,7 +30690,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416774, guid: e062f6bba6c0dc14c9baecbbd2a609a8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.13000011
+      value: 5.80000019
       objectReference: {fileID: 0}
     - target: {fileID: 416774, guid: e062f6bba6c0dc14c9baecbbd2a609a8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -30710,7 +30714,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416774, guid: e062f6bba6c0dc14c9baecbbd2a609a8, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e062f6bba6c0dc14c9baecbbd2a609a8, type: 2}
@@ -31815,7 +31819,7 @@ GameObject:
   - 33: {fileID: 1531021227}
   - 64: {fileID: 1531021226}
   - 114: {fileID: 1531021224}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Accelerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32555,7 +32559,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416774, guid: e062f6bba6c0dc14c9baecbbd2a609a8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.1099999
+      value: 4.48000002
       objectReference: {fileID: 0}
     - target: {fileID: 416774, guid: e062f6bba6c0dc14c9baecbbd2a609a8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -32579,7 +32583,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 416774, guid: e062f6bba6c0dc14c9baecbbd2a609a8, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e062f6bba6c0dc14c9baecbbd2a609a8, type: 2}
@@ -33525,7 +33529,7 @@ GameObject:
   - 33: {fileID: 1634730319}
   - 64: {fileID: 1634730318}
   - 114: {fileID: 1634730316}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Accelerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33806,7 +33810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 4637037}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -34005,6 +34009,10 @@ Prefab:
     - target: {fileID: 100000, guid: a5be31db3f71b0642af74fe491b4bc89, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100000, guid: a5be31db3f71b0642af74fe491b4bc89, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5be31db3f71b0642af74fe491b4bc89, type: 2}
@@ -37750,7 +37758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 4637037}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -40748,7 +40756,7 @@ GameObject:
   - 33: {fileID: 1988451989}
   - 64: {fileID: 1988451988}
   - 114: {fileID: 1988451986}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Accelerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42239,7 +42247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
@@ -43282,7 +43290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circuit: {fileID: 838770462}
   lookAheadForTargetOffset: 15
-  lookAheadForIndicatorTargetOffset: 2
+  lookAheadForIndicatorTargetOffset: 1
   lookAheadForTargetFactor: .100000001
   lookAheadForSpeedOffset: 20
   lookAheadForSpeedFactor: .5
