@@ -5,6 +5,7 @@ public class RespawnScript : MonoBehaviour {
 	
 	private Transform car;
 	private Transform target;
+	private Transform oldTarget;
 	private float timeFlipped;
 	
 	[SerializeField]
@@ -17,6 +18,7 @@ public class RespawnScript : MonoBehaviour {
 	void Start () {
 		car = GetComponent<Transform> ();
 		target = GetComponent<WaypointProgressTracker> ().getTarget ();
+		oldTarget = target;
 	}
 	
 	// Possible ways to require a respawn would be:
@@ -52,13 +54,16 @@ public class RespawnScript : MonoBehaviour {
 			timeFlipped = 0.0f;
 		}
 
-		// Check the distance between
-		if (target != null) {
+		// Check the distance between car-old and car-new
+		if (target != null && oldTarget != null) {
 			// Get the next waypoint target to calculate distance
 			Vector3 direction = target.position - car.position;
 			direction.y = 0;
-		
-			if (direction.magnitude > distanceToWaypointBeforeRespawn) {
+
+			Vector3 directionOld = oldTarget.position - car.position;
+			directionOld.y = 0;
+
+			if (direction.magnitude > distanceToWaypointBeforeRespawn && directionOld.magnitude > distanceToWaypointBeforeRespawn) {
 				Debug.Log("Respawn: Too far");
 				Respawn ();
 			}
@@ -66,6 +71,7 @@ public class RespawnScript : MonoBehaviour {
 	}
 
 	public void UpdateWaypoint(Transform targetArg) {
+		oldTarget = target;
 		target = targetArg;
 	}
 
