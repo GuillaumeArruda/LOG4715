@@ -169,8 +169,8 @@ class CarProjectileLauncher : MonoBehaviour
 
 	public void OnGUI()
 	{
-		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) + 45, 25, 25), BlueShellIcon);
-		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) + 15, 25, 25), RedShellIcon);
-		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) - 15, 25, 25), GreenShellIcon);
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) + 15, 25, 25), BlueShellIcon);
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) - 15, 25, 25), RedShellIcon);
+		GUI.DrawTexture(new Rect(Screen.width - 30, (Screen.height / 2) - 45, 25, 25), GreenShellIcon);
 	}
 }
