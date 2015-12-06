@@ -56,8 +56,8 @@ public class MinimapScript : MonoBehaviour {
             Vector3 carPosition = pos._car.position - terrain.transform.position;
             Vector2 terrainCoord = new Vector2(carPosition.x / terrain.terrainData.size.x, carPosition.z / terrain.terrainData.size.z);
 
-            GUI.DrawTexture(new Rect(Screen.width - minimapWidth + terrainCoord.x * minimapWidth,
-                                    (Screen.height - terrainCoord.y * minimapHeight),
+            GUI.DrawTexture(new Rect(Screen.width - minimapWidth + terrainCoord.x * minimapWidth - markerWidth/2,
+                                    (Screen.height - terrainCoord.y * minimapHeight - markerHeight/2),
                                     markerWidth, markerHeight), GetTextureFromName(pos._name), ScaleMode.ScaleToFit);
         }
 	}
