@@ -10279,6 +10279,7 @@ GameObject:
   - 114: {fileID: 481286564}
   - 114: {fileID: 481286565}
   - 114: {fileID: 481286566}
+  - 114: {fileID: 481286567}
   m_Layer: 8
   m_Name: Joueur 1
   m_TagString: Player
@@ -10600,6 +10601,25 @@ MonoBehaviour:
   lowHealthRatio: .400000006
   lowHealthFactor: .600000024
   damageText: {fileID: 1845678297}
+--- !u!114 &481286567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 481286549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfdd7c4f3bad5648af6921741724d52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minimap: {fileID: 2800000, guid: 94f804c7fca4e5446a3a267ca595cb39, type: 3}
+  redCar: {fileID: 2800000, guid: 3b7225bf50cdea24a820037d2d6ef1ab, type: 3}
+  orangeCar: {fileID: 2800000, guid: 1a9aa3c20b846a8458c944a048b819e2, type: 3}
+  yellowCar: {fileID: 2800000, guid: 254e18d6251f56f4291d29b12d1bf31c, type: 3}
+  whiteCar: {fileID: 2800000, guid: 25688e60edbcb314cb729e77aeafb5b7, type: 3}
+  blueCar: {fileID: 2800000, guid: 5e57fe274d2fd5e4f840f98999cdc176, type: 3}
+  greenCar: {fileID: 2800000, guid: a007f62b178e0c34398590977f6e5108, type: 3}
+  blackCar: {fileID: 2800000, guid: afb69ec4ed66c964282e0404b56e3ff4, type: 3}
 --- !u!1 &487389443
 GameObject:
   m_ObjectHideFlags: 0
@@ -11555,6 +11575,8 @@ MonoBehaviour:
   _announcement: {fileID: 438218563}
   _timeToStart: 3
   _endCountdown: 5
+  update: 1
+  time: 0
 --- !u!114 &557694393
 MonoBehaviour:
   m_ObjectHideFlags: 0
