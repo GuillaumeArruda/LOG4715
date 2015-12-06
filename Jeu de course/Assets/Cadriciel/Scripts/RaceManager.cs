@@ -2,10 +2,22 @@
 using System.Collections.Generic;
 using System.Collections;
 
+public struct Position
+{
+    public Position(Transform car, int position, string name)
+    {
+        _car = car;
+        _position = position;
+        _name = name;
+    }
+
+    public Transform _car;
+    public int _position;
+    public string _name;
+};
+
 public class RaceManager : MonoBehaviour 
 {
-
-
 	[SerializeField]
 	private GameObject _carContainer;
 
@@ -18,11 +30,21 @@ public class RaceManager : MonoBehaviour
 	[SerializeField]
 	private int _endCountdown;
 
+    public List<Position> _positions = new List<Position>();
+    public bool update = true;
+    public float time = 0;
+
 	// Use this for initialization
 	void Awake () 
 	{
+        DontDestroyOnLoad(transform.gameObject);
 		CarActivation(false);
 
+        GameObject cars = GameObject.Find("Cars");
+        foreach(Transform child in cars.transform)
+        {
+            _positions.Add(new Position(child, 0, child.name));
+        }
 	}
 	
 	void Start()
@@ -58,13 +80,13 @@ public class RaceManager : MonoBehaviour
 		int count = _endCountdown;
 		do 
 		{
-			_announcement.text = "Victoire: " + winner + " en premiere place. Retour au titre dans " + count.ToString();
+            _announcement.text = "Course terminée!";
 			yield return new WaitForSeconds(1.0f);
 			count--;
 		}
 		while (count > 0);
 
-		Application.LoadLevel("boot");
+		Application.LoadLevel("end");
 	}
 
 	public void Announce(string announcement, float duration = 2.0f)
@@ -115,10 +137,20 @@ public class RaceManager : MonoBehaviour
     {
         GameObject cars = GameObject.Find("Cars");
         int numberOfCarsAhead = 0;
-        float progress = car.GetComponent<WaypointProgressTracker>().progressDistance;
+        WaypointProgressTracker tracker = car.GetComponent<WaypointProgressTracker>();
+        if(!tracker)
+        {
+            return int.MaxValue;
+        }
 
+        float progress = tracker.progressDistance;
         foreach(WaypointProgressTracker progressTracker in cars.GetComponentsInChildren<WaypointProgressTracker>())
         {
+            if (progressTracker.gameObject == car)
+            {
+                continue;
+            }
+
             if(progressTracker.progressDistance > progress)
             {
                 ++numberOfCarsAhead;
@@ -126,5 +158,22 @@ public class RaceManager : MonoBehaviour
         }
 
         return numberOfCarsAhead + 1;
+    }
+
+    void Update()
+    {
+        if(update)
+        {
+            time += Time.deltaTime;
+            for(int i = 0; i < _positions.Count; ++i)
+            {
+                _positions[i] = new Position(_positions[i]._car, GetPositionOfCar(_positions[i]._car.gameObject), _positions[i]._name);
+            }
+
+            _positions.Sort(delegate (Position x, Position y)
+            {
+                return x._position.CompareTo(y._position);
+            });
+        }
     }
 }

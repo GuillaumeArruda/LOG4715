@@ -54,6 +54,7 @@ public class CheckpointManager : MonoBehaviour
 					if (carData.lap >= _totalLaps)
 					{
 						_finished = true;
+						GetComponent<RaceManager>().update = false;
 						GetComponent<RaceManager>().EndRace(car.name.ToLower());
 					}
 				}
