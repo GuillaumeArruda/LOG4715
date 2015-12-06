@@ -70,6 +70,9 @@ public class RaceManager : MonoBehaviour
 
 	public void EndRace(string winner)
 	{
+        GameObject winnerObj = GameObject.Find(winner);
+        _positions.Remove(_positions.Find(x => x._name == winner));
+        _positions.Insert(0, new Position(winnerObj.transform, 1, winner));
 		StartCoroutine(EndRaceImpl(winner));
 	}
 
@@ -80,7 +83,7 @@ public class RaceManager : MonoBehaviour
 		int count = _endCountdown;
 		do 
 		{
-            _announcement.text = "Course terminée!";
+            _announcement.text = "Course terminée! Le gagnant est " + winner;
 			yield return new WaitForSeconds(1.0f);
 			count--;
 		}

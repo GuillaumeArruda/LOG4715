@@ -55,7 +55,7 @@ public class CheckpointManager : MonoBehaviour
 					{
 						_finished = true;
 						GetComponent<RaceManager>().update = false;
-						GetComponent<RaceManager>().EndRace(car.name.ToLower());
+						GetComponent<RaceManager>().EndRace(car.name);
 					}
 				}
 			}
