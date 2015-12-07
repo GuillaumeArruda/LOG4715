@@ -91,13 +91,13 @@ Dans le cadre du cours
 %	TITLE
 %----------------------------------------------------------------------------------------
 
-\title{TP2: Mécaniques de jeu} 
+\title{TP3: Conception et implantation d'un niveau de jeu} 
 
 \author{\textsc{Guillaume Arruda 1635805 \\ Raphael Lapierre 1644671 \\ Éric Morissette 1631103} % Author
 \vspace{10pt}
 \\{\textit{École polytechnique de Montréal}}} % Institution
 
-\date{9 Novembre 2015} % Date
+\date{7 Décembre 2015} % Date
 
 %----------------------------------------------------------------------------------------
 
@@ -114,44 +114,33 @@ Dans le cadre du cours
 \pagestyle{fancy}
 \fancyhead[L]{LOG4715}
 \fancyhead[C]{}
-\fancyhead[R]{TP2 : Conception et implantation de mécanique de jeu}
+\fancyhead[R]{TP3 : Conception et implantation d'un niveau de jeu}
 \fancyfoot[C]{\textbf{page \thepage}}
 
 %----------------------------------------------------------------------------------------
 %	ESSAY BODY
 %----------------------------------------------------------------------------------------
-\section{Entrepôt}
+\section*{Entrepôt}
 L'entrepôt de la solution est disponible à l'adresse suivante: https://github.com/GuillaumeArruda/LOG4715
 
-\section{Mécaniques}
-\subsection{Points de style}
-La mécanique de point de style est implémenté dans le fichier JumpScript.cs. Elle donne des points lorsque le joueurs est dans les airs et utilise le contrôle aérien. Les points ne donnent rien au joueur excepté la satisfaction de voir un compteur monté.
-\subsection{Projectile rebondissant}
-\subsection{Projectile à tête chercheuse}
-\subsection{Projectile spécial}
-\subsection{Déformation élastique}
-La mécanique de déformation élastique est implémenté dans le fichier RubberBanding.cs.Elle accélère les véhicules dans les dernières positions pour éviter qu'un trop grand écart se crée dans la course.
-\subsection{Objets destructibles}
-La mécanique d'object destructible est implémentée dans le fichier DestructibleObjectScript.cs. Elle permet de détruire certains des murs à l'aide des différents projectiles dans le jeu. Les murs destructibles sont différenciés à l'aide d'une texture fissurée qui s'aggravent lorsqu'ils recoivent plus de la moitié des coups nécessaires à leur destruction.
-\subsection{Dommages au véhicule}
-La mécanique de dommage au véhicule est implémentée dans le fichier DamageScript.cs.Elle permet au véhicule de recevoir du dommage lorsqu'il collisionne avec un projectile ou un autre vehicule. Lorsque le véhicule est partiellement endommagé, sa vitesse maximale est légèrement réduite. S'il est très endommagé, la vitesse maximale est encore plus impactée. Si le vehicule est détruit, il est replacé sur la piste avec sa vie maximale.
-\subsection{Replacement}
-La mécanique du replacement du véhicule est implémentée dans le fichier RespawnScript.cs. Le système de replacement de véhicule permet au joueur d'être repositionné sur la piste si certaines conditions sont atteintes. Par exemple, s'il est tombé en dessous de la piste, s'il est trop éloigné de l'endroit ou il est sensé aller où si son véhicule est détruit.
-\subsection{Bonus accélérateurs}
-La mécanique de bonus accélérateurs est implémentée dans le fichier CarAccelerator.cs. Les accélérateurs accélèrent les véhicules qui les touches dans la direction où les véhicules font face.
-\subsection{Objets collectionnables}
-La mécanique d'objets collectionnables est implémentée dans le fichier PickUpItemScript.cs.Il y a 5 type d'objets qui peuvent être ramassés soient : projectile rebondissant, projectile tête chercheuse, projectile spécial, réparation et nitro. Certains des objets sont dans les airs pour forcer le joueur à faire une évaluation risque-récompense et tester les capacités de celui-ci.
-\subsection{Nitro}
-La mécanique de Nitro est implémentée dans le fichier NitroScript.cs. La nitro peut être utilisée dans les airs pour propulser le joueur dans la direction qu'il souhaite, permettant ainsi un controle aérien semblable a Rocket League. Elle se recharge automatiquement et utilise la touche shift.
-\subsection{Saut simple}
-La mécanique de saut simple est implémenté dans le fichier JumpScript.cs. Elle utilise la touche espace. Le saut permet d'éviter les collisions avec des projectiles et les autres véhicules. Elle permet aussi d'activer le contrôle aérien.
-\subsection{Orientation aérienne}
-La mécanique d'orientation aérienne est implémenté dans le fichier JumpScript.cs. Elle utilise les touches W,S pour le contrôle le long de l'axe des z, les touches A,D pour le contrôle le long de l'axe des y et Q,E pour le contrôle le long de l'axe des x. Elle permet au joueur de facilement contrôler le véhicule dans les airs pour favoriser l'utilisation de la Nitro.
-\subsection{Indications}
-La mécanique d'indication de la direction est implémentée dans le fichier PathIndicatorScript.cs. L'indicateur permet au joueur de voir dans quelle direction la piste se dirige afin de savoir dans quel sens aller.
-\subsection{Jauge de vitesse}
-La mécanique de jauge de vitesse est implémentée dans le fichier SpeedMeterScript.cs. Elle permet de montrer au joueur à quelle vitesse il se déplace. Cela est particulièrement utile lors de virages sérrés où il y a des chances de tonneaux si l'on ne fait pas attention à l'angle de virage et de la vitesse en jeu.
-
+\section*{Explication}
+\subsection*{Contrôle}
+Les contrôles sont similaires à la remise du projet 2. WASD contrôlent le déplacement de la voiture au sol. Espace contrôle le saut,
+Shift la nitro, E et Q la rotation dans les airs et la souris les différents types de projectiles.
+\subsection*{Thématique}
+Notre équipe d’artistes a travaillé jour et nuit pour créer de magnifiques textures à la main. Ces textures créées à l’aide de technologie de pointe font ressortir la nostalgie du joueur en lui rappelant les heures perdues a innover sur Paint plutôt que de travailler lors de son enfance. Ces textures viennent aussi s’inscrire dans la thématique Loco de notre jeu. Nous avons opté pour un jeu rapide oè les dérapages et accidents sont courant.
+\subsection*{Nouveau tracé}
+Le nouveau tracé de la piste comporte plusieurs aspects pouvant intéressants au joueur: Il y a des pentes montantes et descendantes, il y a des sauts, des virages secs et larges,	des endroits où la piste se sépare en deux, donnant un choix au joueur, ainsi que plusieurs raccourcis comportants leurs avantages et risques.
+\subsection*{Guidage}
+Pour le guidage du joueur, nous avons opté pour quelques façons simples de diriger le joueur.	Premièrement, nous avons ajoutés des grosses flèches sur le sol afin de pointer la direction dans laquelle il faut aller. Deuxièmement, nous avons augmenté le contraste et les dimensions des murs afin de les rendre plus faciles à voir pour le joueur. Troisièmement, l'utilisation d'objets en mouvement permet de dire au joueur où se trouvent des raccourcis risqués.
+\subsection*{Raccourci}
+Nous avons ajoutés plusieurs raccourcis dans le tracé de la piste afin de rendre la course plus intéressante au joueur humain étant capable de comprendre les différentes possibilités s'offrant à lui. Nous avons un saut passant au travers d'un trou dans un mur afin de sauver un léger détour, un virage qui peut être coupé si l'on passe en dessous de plusieurs objets tournants sur eux mêmes, qui bloquent en partie le chemin, 	un passage caché par un objet en mouvement qui permet de se rendre au fil d'arrivé plus rapidement.
+\subsection*{Éléments de piste en mouvement}
+Nous avons ajoutés quelques objets en mouvement afin de bloquer les mouvements du joueur, sans affecter les joueurs artificiels. Ces blocs en mouvement bloquent certains raccourcis pouvant être pris par le joueur humain.
+\subsection*{Récompenses}
+Les mêmes récompenses qu'au TP2 ont étées ajoutées au nouveau tracé afin de donner plus d'éléments de choix et de pouvoir au joueur.
+\subsection*{Replacement}
+L'algorithme de replacement à été très légèrement modifié afin de mieux être adapté au nouveau tracé de la piste.
 \vspace{10pt}
 %----------------------------------------------------------------------------------------
 \end{document}
